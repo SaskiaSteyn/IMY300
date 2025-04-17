@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0odi1fmomock"]
+
+[ext_resource type="PackedScene" uid="uid://c110fhnxbvdfc" path="res://scenes/room_layout.tscn" id="1_wjnv8"]
+
+[node name="Main game" type="Node"]
+
+[node name="Room" parent="." instance=ExtResource("1_wjnv8")]
+position = Vector2(1627, 599)
+starts_with_player = true
+
+[node name="Room2" parent="." instance=ExtResource("1_wjnv8")]
+position = Vector2(427, 597)
+room_name = 1

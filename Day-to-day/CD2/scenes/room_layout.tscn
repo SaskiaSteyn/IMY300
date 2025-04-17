@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://c110fhnxbvdfc"]
+
+[ext_resource type="Texture2D" uid="uid://bvqlmw13rv1od" path="res://assets/art/bedroom-sprite.png" id="1_f8kj7"]
+[ext_resource type="Script" path="res://scripts/room_layout.gd" id="1_kcc0f"]
+[ext_resource type="Shader" path="res://shaders/glow-shader.gdshader" id="2_qvr6m"]
+[ext_resource type="Texture2D" uid="uid://kxd0lfnkeat1" path="res://assets/art/bed-sprite.png" id="3_38wak"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ier2"]
+shader = ExtResource("2_qvr6m")
+shader_parameter/width = 10
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 3.0
+shader_parameter/minimal_flickering_alpha = null
+
+[sub_resource type="Curve2D" id="Curve2D_ikvlj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -607, 153, 0, 0, 0, 0, 1, 154)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orf8h"]
+size = Vector2(1179, 678)
+
+[node name="Room" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_kcc0f")
+
+[node name="RoomLayout" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_f8kj7")
+
+[node name="Bed-sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7ier2")
+scale = Vector2(0.500424, 0.500367)
+texture = ExtResource("3_38wak")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ikvlj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-607, 153)
+rotation = 0.00164474
+rotates = false
+loop = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_orf8h")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
