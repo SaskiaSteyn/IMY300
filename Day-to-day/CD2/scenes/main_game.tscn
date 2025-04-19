@@ -1,13 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0odi1fmomock"]
+[gd_scene load_steps=9 format=3 uid="uid://b0odi1fmomock"]
 
+[ext_resource type="Script" uid="uid://dr6q78nardhmt" path="res://scripts/camera_2d.gd" id="1_72e8q"]
 [ext_resource type="PackedScene" uid="uid://c110fhnxbvdfc" path="res://scenes/room_layout.tscn" id="1_wjnv8"]
+[ext_resource type="Script" uid="uid://grkkm3121iaj" path="res://scripts/game_manager.gd" id="1_ygxny"]
+[ext_resource type="Script" uid="uid://ccvvmq7jpno2" path="res://scripts/progress_bar.gd" id="3_d2op2"]
+[ext_resource type="Shader" uid="uid://boj46sw1xh6m8" path="res://shaders/screen_saturation.gdshader" id="3_ipu61"]
+[ext_resource type="Script" uid="uid://dprluq7fsj0oh" path="res://shaders/saturation_canvas.gd" id="4_ipu61"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygxny"]
+shader = ExtResource("3_ipu61")
+shader_parameter/threshold = 0.0
+shader_parameter/delta = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rdsr"]
 
 [node name="Main game" type="Node"]
 
-[node name="Room" parent="." instance=ExtResource("1_wjnv8")]
+[node name="Gameplay" type="Node" parent="."]
+
+[node name="game_manager" type="Node" parent="Gameplay"]
+script = ExtResource("1_ygxny")
+
+[node name="Level Assets" type="Node2D" parent="."]
+
+[node name="Room" parent="Level Assets" instance=ExtResource("1_wjnv8")]
 position = Vector2(1627, 599)
 starts_with_player = true
 
-[node name="Room2" parent="." instance=ExtResource("1_wjnv8")]
-position = Vector2(427, 597)
+[node name="Room2" parent="Level Assets" instance=ExtResource("1_wjnv8")]
+position = Vector2(447, 599)
 room_name = 1
+
+[node name="Camera2D" type="Camera2D" parent="Level Assets"]
+position = Vector2(960, 540)
+script = ExtResource("1_72e8q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Level Assets/Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Level Assets/Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_ygxny")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("4_ipu61")
+
+[node name="ProgressBar" type="ProgressBar" parent="Level Assets/Camera2D/CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -378.0
+offset_right = 94.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_0rdsr")
+value = 40.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("3_d2op2")
+
+[connection signal="value_changed" from="Level Assets/Camera2D/CanvasLayer/ProgressBar" to="Level Assets/Camera2D/CanvasLayer/ProgressBar" method="_on_value_changed"]
