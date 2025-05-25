@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bswa40fg1qad7"]
+
+[ext_resource type="Script" uid="uid://cy2w0lnrt4dkl" path="res://scripts/key.gd" id="1_fttkb"]
+[ext_resource type="Texture2D" uid="uid://c2h743hdctvxy" path="res://assets/art/Key_Sprite.png" id="1_yk2u2"]
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="2_wy8tx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brs3p"]
+shader = ExtResource("2_wy8tx")
+shader_parameter/width = 10
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 5.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
+[node name="key" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+script = ExtResource("1_fttkb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_brs3p")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_yk2u2")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-17.4398, 21.0491)
+rotation = -0.418879
+polygon = PackedVector2Array(-73.4818, -20.729, -81.1033, -10.9866, -76.9487, 1.80946, -57.7643, 10.3509, -39.1867, 15.3383, -26.3971, 21.0326, -19.9022, 26.1136, -5.89234, 29.0673, -1.01795, 27.9536, 36.8377, 53.5651, 76.3461, 36.127, 86.5145, 13.2884, 92.2153, -9.35014, 81.9661, -18.2919, 57.507, -34.655, 37.5091, -41.3694, 17.7048, -33.7672, 0.334572, -21.7975, -12.7617, -24.3445, -36.8206, -31.7722, -54.6912, -30.9717)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

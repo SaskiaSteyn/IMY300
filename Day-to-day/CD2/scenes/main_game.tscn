@@ -1,18 +1,412 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0odi1fmomock"]
+[gd_scene load_steps=33 format=3 uid="uid://0exf3jl2v3qp"]
 
 [ext_resource type="Script" uid="uid://dr6q78nardhmt" path="res://scripts/camera_2d.gd" id="1_72e8q"]
-[ext_resource type="PackedScene" uid="uid://c110fhnxbvdfc" path="res://scenes/room_layout.tscn" id="1_wjnv8"]
+[ext_resource type="PackedScene" uid="uid://cvtqrtdmmom7f" path="res://scenes/rooms/bedroom.tscn" id="1_wjnv8"]
 [ext_resource type="Script" uid="uid://grkkm3121iaj" path="res://scripts/game_manager.gd" id="1_ygxny"]
 [ext_resource type="Script" uid="uid://ccvvmq7jpno2" path="res://scripts/progress_bar.gd" id="3_d2op2"]
 [ext_resource type="Shader" uid="uid://boj46sw1xh6m8" path="res://shaders/screen_saturation.gdshader" id="3_ipu61"]
+[ext_resource type="PackedScene" uid="uid://7ld0jp32wueg" path="res://scenes/rooms/bathroom-layout.tscn" id="3_wi4c7"]
+[ext_resource type="PackedScene" uid="uid://chmoj7chbptds" path="res://scenes/rooms/kitchen.tscn" id="4_70vka"]
 [ext_resource type="Script" uid="uid://dprluq7fsj0oh" path="res://shaders/saturation_canvas.gd" id="4_ipu61"]
+[ext_resource type="Shader" uid="uid://drwws7f0m4k2q" path="res://shaders/sky_bg.gdshader" id="6_ihbck"]
+[ext_resource type="Script" uid="uid://dq07b6p221khr" path="res://scripts/sky_background.gd" id="6_vnsdt"]
+[ext_resource type="Texture2D" uid="uid://lodfwjdiwxot" path="res://assets/art/solid rect.png" id="8_wjob3"]
+[ext_resource type="FontFile" uid="uid://jshayppk6c0q" path="res://assets/fonts/Single_Day/SingleDay-Regular.ttf" id="9_2l77h"]
+[ext_resource type="Texture2D" uid="uid://siv8atst8n2a" path="res://assets/art/holy rect.png" id="9_8xp80"]
+[ext_resource type="Script" uid="uid://dftk7hjd46sb5" path="res://scripts/ui_clock.gd" id="10_nqdth"]
+[ext_resource type="Texture2D" uid="uid://0cqs7ystrcy1" path="res://assets/art/coloured rect.png" id="10_sp04v"]
+[ext_resource type="Texture2D" uid="uid://w0xjdf23q56g" path="res://assets/art/clock.png" id="13_8xp80"]
+[ext_resource type="FontFile" uid="uid://6orknuqy5513" path="res://assets/fonts/DigitalNumbers/DigitalNumbers-Regular.ttf" id="14_sp04v"]
+[ext_resource type="Script" uid="uid://bwb13v3lnu6qg" path="res://scripts/popups/popups.gd" id="18_ikqpi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygxny"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnsdt"]
+shader = ExtResource("6_ihbck")
+shader_parameter/first_color = Color(0.94902, 0.756863, 0.796078, 1)
+shader_parameter/second_color = Color(0.67451, 0.764706, 0.901961, 1)
+shader_parameter/position = 0.0
+shader_parameter/size = 0.7
+shader_parameter/angle = 90.0
+
+[sub_resource type="Animation" id="Animation_ikqpi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.94902, 0.756863, 0.796078, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.67451, 0.764706, 0.901961, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7]
+}
+
+[sub_resource type="Animation" id="Animation_ibnub"]
+resource_name = "day_to_evening"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.392583, 0.668915, 0.929562, 1), Color(0.843563, 0.626314, 0.792536, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.78286, 0.882614, 0.983127, 1), Color(0.492839, 0.726689, 0.95297, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7, 0.6]
+}
+
+[sub_resource type="Animation" id="Animation_6de02"]
+resource_name = "day_to_evening_quick"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.392583, 0.668915, 0.929562, 1), Color(0.843563, 0.626314, 0.792536, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.78286, 0.882614, 0.983127, 1), Color(0.492839, 0.726689, 0.95297, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7, 0.6]
+}
+
+[sub_resource type="Animation" id="Animation_5wboo"]
+resource_name = "evening_to_night"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.843563, 0.626314, 0.792536, 1), Color(0.0128125, 0.095101, 0.172071, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.492839, 0.726689, 0.95297, 1), Color(0.0297088, 0.157826, 0.266906, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.8]
+}
+
+[sub_resource type="Animation" id="Animation_cybgu"]
+resource_name = "evening_to_night_quick"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.843563, 0.626314, 0.792536, 1), Color(0.0128125, 0.095101, 0.172071, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.492839, 0.726689, 0.95297, 1), Color(0.0297088, 0.157826, 0.266906, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.8]
+}
+
+[sub_resource type="Animation" id="Animation_yu8cv"]
+resource_name = "morning_to_day"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.94902, 0.756863, 0.796078, 1), Color(0.392583, 0.668915, 0.929562, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.672821, 0.765878, 0.902402, 1), Color(0.78286, 0.882614, 0.983127, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.7]
+}
+
+[sub_resource type="Animation" id="Animation_vnsdt"]
+resource_name = "morning_to_day_quick"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.94902, 0.756863, 0.796078, 1), Color(0.392583, 0.668915, 0.929562, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.672821, 0.765878, 0.902402, 1), Color(0.78286, 0.882614, 0.983127, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.7]
+}
+
+[sub_resource type="Animation" id="Animation_5luka"]
+resource_name = "night_to_morning"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0128125, 0.095101, 0.172071, 1), Color(0.950702, 0.757156, 0.795373, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0176493, 0.116473, 0.204391, 1), Color(0.672821, 0.765878, 0.902402, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 0.6]
+}
+
+[sub_resource type="Animation" id="Animation_wdxbp"]
+resource_name = "night_to_morning_quick"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:material:shader_parameter/first_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0128125, 0.095101, 0.172071, 1), Color(0.950702, 0.757156, 0.795373, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkyBackground:material:shader_parameter/second_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0176493, 0.116473, 0.204391, 1), Color(0.672821, 0.765878, 0.902402, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkyBackground:material:shader_parameter/size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 0.6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6de02"]
+_data = {
+&"RESET": SubResource("Animation_ikqpi"),
+&"day_to_evening": SubResource("Animation_ibnub"),
+&"day_to_evening_quick": SubResource("Animation_6de02"),
+&"evening_to_night": SubResource("Animation_5wboo"),
+&"evening_to_night_quick": SubResource("Animation_cybgu"),
+&"morning_to_day": SubResource("Animation_yu8cv"),
+&"morning_to_day_quick": SubResource("Animation_vnsdt"),
+&"night_to_morning": SubResource("Animation_5luka"),
+&"night_to_morning_quick": SubResource("Animation_wdxbp")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2l77h"]
 shader = ExtResource("3_ipu61")
 shader_parameter/threshold = 0.0
 shader_parameter/delta = 0.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rdsr"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sp04v"]
+texture = ExtResource("13_8xp80")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikqpi"]
+shader = ExtResource("3_ipu61")
+shader_parameter/threshold = 0.0
+shader_parameter/delta = 0.0
 
 [node name="Main game" type="Node"]
 
@@ -23,43 +417,147 @@ script = ExtResource("1_ygxny")
 
 [node name="Level Assets" type="Node2D" parent="."]
 
-[node name="Room" parent="Level Assets" instance=ExtResource("1_wjnv8")]
-position = Vector2(1627, 599)
+[node name="Bedroom" parent="Level Assets" instance=ExtResource("1_wjnv8")]
+position = Vector2(960, 540)
 starts_with_player = true
 
-[node name="Room2" parent="Level Assets" instance=ExtResource("1_wjnv8")]
-position = Vector2(447, 599)
-room_name = 1
+[node name="Bathroom" parent="Level Assets" instance=ExtResource("3_wi4c7")]
+visible = false
+position = Vector2(31, 540)
+input_pickable = true
+
+[node name="Kitchen" parent="Level Assets" instance=ExtResource("4_70vka")]
+visible = false
+position = Vector2(-898, 540)
 
 [node name="Camera2D" type="Camera2D" parent="Level Assets"]
 position = Vector2(960, 540)
+limit_left = -2500
+limit_top = 0
+limit_right = 2500
+limit_bottom = 1000
 script = ExtResource("1_72e8q")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Level Assets/Camera2D"]
+[node name="BackgroundSky" type="CanvasLayer" parent="Level Assets/Camera2D"]
+layer = -5
+script = ExtResource("6_vnsdt")
 
-[node name="ColorRect" type="ColorRect" parent="Level Assets/Camera2D/CanvasLayer"]
-material = SubResource("ShaderMaterial_ygxny")
+[node name="SkyBackground" type="ColorRect" parent="Level Assets/Camera2D/BackgroundSky"]
+show_behind_parent = true
+z_index = -1
+z_as_relative = false
+material = SubResource("ShaderMaterial_vnsdt")
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.996078, 0.870588, 0.886275, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level Assets/Camera2D/BackgroundSky"]
+libraries = {
+&"": SubResource("AnimationLibrary_6de02")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Level Assets/Camera2D"]
+layer = -3
+follow_viewport_enabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Level Assets/Camera2D/CanvasLayer"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(1600, 140, -1600, 140, -1620, 260, -1600, 260, -1600, 1080, -1420, 1080, -1420, 260, 1620, 260)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Level Assets/Camera2D/CanvasLayer"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(1530, 260, 1530, 840, -1600, 840, -1600, 1080, 1600, 1080, 1600, 260)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Level Assets/Camera2D/CanvasLayer"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(548, 869, 562, 208, -1190, 179, -1190, 938)
+
+[node name="UI" type="CanvasLayer" parent="Level Assets/Camera2D"]
+
+[node name="SaturationShader" type="ColorRect" parent="Level Assets/Camera2D/UI"]
+material = SubResource("ShaderMaterial_2l77h")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+color = Color(1, 1, 1, 0)
 script = ExtResource("4_ipu61")
 
-[node name="ProgressBar" type="ProgressBar" parent="Level Assets/Camera2D/CanvasLayer"]
+[node name="ProgressBar" type="TextureProgressBar" parent="Level Assets/Camera2D/UI"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -378.0
-offset_right = 94.0
-offset_bottom = -28.0
+offset_left = 11.0
+offset_top = -405.0
+offset_right = 169.0
+offset_bottom = 244.0
 grow_vertical = 0
-theme_override_styles/fill = SubResource("StyleBoxFlat_0rdsr")
-value = 40.0
+scale = Vector2(0.6, 0.6)
+step = 11.0
+value = 88.0
 fill_mode = 3
-show_percentage = false
+texture_under = ExtResource("8_wjob3")
+texture_over = ExtResource("9_8xp80")
+texture_progress = ExtResource("10_sp04v")
+tint_under = Color(0.834614, 0.834614, 0.834614, 1)
 script = ExtResource("3_d2op2")
 
-[connection signal="value_changed" from="Level Assets/Camera2D/CanvasLayer/ProgressBar" to="Level Assets/Camera2D/CanvasLayer/ProgressBar" method="_on_value_changed"]
+[node name="MarginContainer" type="MarginContainer" parent="Level Assets/Camera2D/UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -40.0
+offset_right = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="Level Assets/Camera2D/UI/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_2l77h")
+theme_override_font_sizes/font_size = 30
+text = "ESC to pause game"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Level Assets/Camera2D/UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_right = 246.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_sp04v")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level Assets/Camera2D/UI/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("14_sp04v")
+theme_override_font_sizes/normal_font_size = 35
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_nqdth")
+
+[node name="Popups" type="CanvasLayer" parent="Level Assets/Camera2D"]
+layer = 2
+visible = false
+script = ExtResource("18_ikqpi")
+
+[node name="PopupSlot" type="CanvasLayer" parent="Level Assets/Camera2D/Popups"]
+layer = 2
+
+[node name="PopupSaturationShader" type="ColorRect" parent="Level Assets/Camera2D/Popups"]
+material = SubResource("ShaderMaterial_ikqpi")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
+script = ExtResource("4_ipu61")
+
+[connection signal="value_changed" from="Level Assets/Camera2D/UI/ProgressBar" to="Level Assets/Camera2D/UI/ProgressBar" method="_on_value_changed"]

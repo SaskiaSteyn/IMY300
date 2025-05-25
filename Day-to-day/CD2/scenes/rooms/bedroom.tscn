@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvtqrtdmmom7f"]
+
+[ext_resource type="Texture2D" uid="uid://bvqlmw13rv1od" path="res://assets/art/bedroom-sprite.png" id="1_f8kj7"]
+[ext_resource type="Script" uid="uid://ccis4mnardyiu" path="res://scripts/rooms/bedroom.gd" id="1_kcc0f"]
+[ext_resource type="PackedScene" uid="uid://i6fkesfmg1eo" path="res://scenes/activities/make_bed.tscn" id="3_7j40l"]
+[ext_resource type="PackedScene" uid="uid://cwr2huw5d73da" path="res://scenes/activities/bed_sleep.tscn" id="4_khs6t"]
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="5_u2o5o"]
+
+[sub_resource type="Shader" id="Shader_khs6t"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform int width:hint_range(0, 10, 1);
+uniform vec4 outline_color:source_color;
+uniform float flickering_speed:hint_range(0.0, 50.0, 1.);
+uniform float minimal_flickering_alpha:hint_range(0.0, 0.9, 0.1);
+
+void fragment() {
+	vec2 pixel_size = TEXTURE_PIXEL_SIZE;
+	if (texture(TEXTURE, UV).a == 0.)
+	{
+		for(int x = -width; x <= width; x++)
+		{
+			for(int y = -width; y <= width; y++)
+			{
+				vec2 pixel_offset = vec2(float(x),float(y));
+				if( texture(TEXTURE, UV+(pixel_offset*pixel_size)).a > 0.)
+				{
+					vec4 resulting_color = outline_color;
+					float alpha_norm = (sin(TIME*flickering_speed) +1.2) *0.5;
+					alpha_norm = (1.- minimal_flickering_alpha) * alpha_norm + minimal_flickering_alpha;
+					resulting_color.a = alpha_norm;
+					COLOR = resulting_color;
+				}
+			}
+		}
+	}else
+	{
+		COLOR = texture(TEXTURE, UV);
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wovg"]
+resource_local_to_scene = true
+shader = SubResource("Shader_khs6t")
+shader_parameter/width = 10
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 3.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2v72"]
+resource_local_to_scene = true
+shader = ExtResource("5_u2o5o")
+shader_parameter/width = 10
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 3.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
+[sub_resource type="Curve2D" id="Curve2D_ikvlj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -607, 153, 0, 0, 0, 0, -190, 153)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orf8h"]
+size = Vector2(1179, 678)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whf2s"]
+size = Vector2(1171, 24)
+
+[node name="Room" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_kcc0f")
+
+[node name="RoomLayout" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_f8kj7")
+
+[node name="make_bed" parent="." instance=ExtResource("3_7j40l")]
+material = SubResource("ShaderMaterial_2wovg")
+
+[node name="bed_sleep" parent="." instance=ExtResource("4_khs6t")]
+visible = false
+material = SubResource("ShaderMaterial_b2v72")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ikvlj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-607, 153)
+rotation = 0.00164474
+rotates = false
+loop = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_orf8h")
+
+[node name="floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(0.5, 325)
+shape = SubResource("RectangleShape2D_whf2s")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

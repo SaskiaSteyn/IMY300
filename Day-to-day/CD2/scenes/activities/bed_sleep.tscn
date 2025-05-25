@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwr2huw5d73da"]
+
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="1_dslw4"]
+[ext_resource type="Script" uid="uid://cth8u2glo48f1" path="res://scripts/activities/bed_sleep.gd" id="2_dslw4"]
+[ext_resource type="Texture2D" uid="uid://kxd0lfnkeat1" path="res://assets/art/bed-sprite.png" id="3_dslw4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf5qi"]
+resource_local_to_scene = true
+shader = ExtResource("1_dslw4")
+shader_parameter/width = 10
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 3.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y06w7"]
+resource_local_to_scene = true
+shader = ExtResource("1_dslw4")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[node name="Bed-sprite" type="StaticBody2D" groups=["bedroom_chore", "chores"]]
+material = SubResource("ShaderMaterial_qf5qi")
+scale = Vector2(0.500424, 0.500367)
+input_pickable = true
+script = ExtResource("2_dslw4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_y06w7")
+texture = ExtResource("3_dslw4")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(207.824, 260.809)
+polygon = PackedVector2Array(-409.653, 226.833, -279.763, 198.854, 213.818, 204.849, 377.679, 206.848, 355.698, 86.9358, 207.824, -74.9454, 205.825, -208.847, -227.807, -206.849, -225.809, -78.9425, -287.756, -46.966, -363.692, 34.9739, -427.638, 136.899)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

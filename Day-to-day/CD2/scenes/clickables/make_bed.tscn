@@ -1,0 +1,211 @@
+[gd_scene load_steps=24 format=3 uid="uid://dfvai47e5mich"]
+
+[ext_resource type="Script" uid="uid://bmdfcd74ox1er" path="res://scripts/clickables/clickable_core.gd" id="1_ep4yc"]
+[ext_resource type="Script" uid="uid://cbjyebro5h232" path="res://scripts/clickables/clickable.gd" id="2_ep4yc"]
+[ext_resource type="Texture2D" uid="uid://bvqlmw13rv1od" path="res://assets/art/bedroom-sprite.png" id="2_xy45h"]
+[ext_resource type="Texture2D" uid="uid://ct005yb3o6j16" path="res://assets/art/bedroom/clickables/bed-stripped.PNG" id="3_5w04o"]
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="4_gx55a"]
+[ext_resource type="Texture2D" uid="uid://bnu2ovxdnhakw" path="res://assets/art/bedroom/clickables/green-pillow-final-position.PNG" id="5_6k0ii"]
+[ext_resource type="Texture2D" uid="uid://c35qndjd3vh1h" path="res://assets/art/bedroom/clickables/blanket-final-position.PNG" id="5_bmkux"]
+[ext_resource type="Texture2D" uid="uid://vpi1xghwqk8c" path="res://assets/art/bedroom/clickables/blanket-init-position.PNG" id="7_6k0ii"]
+[ext_resource type="Texture2D" uid="uid://d1q85b364xlae" path="res://assets/art/bedroom/clickables/green-pillow-init-position.PNG" id="7_11vuh"]
+[ext_resource type="Texture2D" uid="uid://b7833w4u847hu" path="res://assets/art/bedroom/clickables/sand-pillow-final-position.PNG" id="8_tcr6l"]
+[ext_resource type="Texture2D" uid="uid://colytg7ls72mg" path="res://assets/art/bedroom/clickables/sand-pillow-init-position.PNG" id="9_vxfpp"]
+[ext_resource type="Texture2D" uid="uid://ce3p7tqomqqck" path="res://assets/art/bedroom/clickables/big-pillow-left-final-position.PNG" id="10_nyl8d"]
+[ext_resource type="Texture2D" uid="uid://cklrmpa5bbemy" path="res://assets/art/bedroom/clickables/big-pillow-left-init-position.PNG" id="11_0js6s"]
+[ext_resource type="Texture2D" uid="uid://c0yyf4p0xwcmx" path="res://assets/art/bedroom/clickables/big-pillow-right-final-position.PNG" id="12_lyw6r"]
+[ext_resource type="Texture2D" uid="uid://b7ei156xnh24d" path="res://assets/art/bedroom/clickables/big-pillow-right-init-position.PNG" id="13_l1kwk"]
+[ext_resource type="Shader" uid="uid://boj46sw1xh6m8" path="res://shaders/screen_saturation.gdshader" id="16_nyl8d"]
+[ext_resource type="Script" uid="uid://dprluq7fsj0oh" path="res://shaders/saturation_canvas.gd" id="17_0js6s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcr6l"]
+shader = ExtResource("4_gx55a")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxfpp"]
+shader = ExtResource("4_gx55a")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyl8d"]
+shader = ExtResource("4_gx55a")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmkux"]
+shader = ExtResource("4_gx55a")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6k0ii"]
+shader = ExtResource("4_gx55a")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lyw6r"]
+shader = ExtResource("16_nyl8d")
+shader_parameter/threshold = 0.0
+shader_parameter/delta = 0.0
+
+[node name="Make Bed" type="Node2D"]
+script = ExtResource("1_ep4yc")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background"]
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_xy45h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_5w04o")
+
+[node name="Clickables" type="Node2D" parent="."]
+
+[node name="BigPillowRight" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("2_ep4yc")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/BigPillowRight"]
+visible = false
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("12_lyw6r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/BigPillowRight"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Clickables/BigPillowRight/StaticBody2D"]
+position = Vector2(380, 380)
+polygon = PackedVector2Array(543, 29, 517, 118, 664, 153, 820, 163, 801, 57, 670, 50)
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/BigPillowRight/StaticBody2D"]
+material = SubResource("ShaderMaterial_tcr6l")
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("13_l1kwk")
+
+[node name="BigPillowLeft" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("2_ep4yc")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/BigPillowLeft"]
+visible = false
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_nyl8d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/BigPillowLeft"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Clickables/BigPillowLeft/StaticBody2D"]
+position = Vector2(380, 380)
+polygon = PackedVector2Array(250, 87, 248, 182, 355, 178, 548, 141, 548, 119, 502, 41, 368, 74)
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/BigPillowLeft/StaticBody2D"]
+material = SubResource("ShaderMaterial_vxfpp")
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_0js6s")
+
+[node name="SandPillow" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("2_ep4yc")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/SandPillow"]
+visible = false
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_tcr6l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/SandPillow"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Clickables/SandPillow/StaticBody2D"]
+position = Vector2(380, 380)
+polygon = PackedVector2Array(286, 500, 267, 566, 463, 583, 465, 491)
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/SandPillow/StaticBody2D"]
+material = SubResource("ShaderMaterial_nyl8d")
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_vxfpp")
+
+[node name="GreenPillow" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("2_ep4yc")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/GreenPillow"]
+visible = false
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_6k0ii")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/GreenPillow"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Clickables/GreenPillow/StaticBody2D"]
+position = Vector2(380, 380)
+polygon = PackedVector2Array(84, 500, 89, 573, 338, 573, 363, 496, 334, 484, 204, 503, 96, 472)
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/GreenPillow/StaticBody2D"]
+material = SubResource("ShaderMaterial_bmkux")
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_11vuh")
+
+[node name="Blanket" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("2_ep4yc")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/Blanket"]
+visible = false
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bmkux")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/Blanket"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Clickables/Blanket/StaticBody2D"]
+position = Vector2(380, 380)
+polygon = PackedVector2Array(140, 146, 74, 229, 91, 266, 176, 231, 261, 264, 331, 347, 337, 456, 504, 475, 654, 355, 721, 222, 873, 210, 936, 257, 951, 364, 990, 400, 1023, 326, 999, 239, 819, 98, 191, 108)
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/Blanket/StaticBody2D"]
+material = SubResource("ShaderMaterial_6k0ii")
+position = Vector2(620, 220)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_6k0ii")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SaturationShader" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_lyw6r")
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("17_0js6s")
+
+[connection signal="input_event" from="Clickables/BigPillowRight/StaticBody2D" to="Clickables/BigPillowRight" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/BigPillowRight/StaticBody2D" to="Clickables/BigPillowRight" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/BigPillowRight/StaticBody2D" to="Clickables/BigPillowRight" method="_on_mouse_exited"]
+[connection signal="input_event" from="Clickables/BigPillowLeft/StaticBody2D" to="Clickables/BigPillowLeft" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/BigPillowLeft/StaticBody2D" to="Clickables/BigPillowLeft" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/BigPillowLeft/StaticBody2D" to="Clickables/BigPillowLeft" method="_on_mouse_exited"]
+[connection signal="input_event" from="Clickables/SandPillow/StaticBody2D" to="Clickables/SandPillow" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/SandPillow/StaticBody2D" to="Clickables/SandPillow" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/SandPillow/StaticBody2D" to="Clickables/SandPillow" method="_on_mouse_exited"]
+[connection signal="input_event" from="Clickables/GreenPillow/StaticBody2D" to="Clickables/GreenPillow" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/GreenPillow/StaticBody2D" to="Clickables/GreenPillow" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/GreenPillow/StaticBody2D" to="Clickables/GreenPillow" method="_on_mouse_exited"]
+[connection signal="input_event" from="Clickables/Blanket/StaticBody2D" to="Clickables/Blanket" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/Blanket/StaticBody2D" to="Clickables/Blanket" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/Blanket/StaticBody2D" to="Clickables/Blanket" method="_on_mouse_exited"]

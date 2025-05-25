@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://d22jab8r62nxq"]
+
+[ext_resource type="Script" uid="uid://bmdfcd74ox1er" path="res://scripts/clickables/clickable_core.gd" id="1_oqsy7"]
+[ext_resource type="Texture2D" uid="uid://cfu30r5d18hg6" path="res://assets/art/kitchen/sink-top-down.PNG" id="2_mwb7o"]
+[ext_resource type="Script" uid="uid://cbjyebro5h232" path="res://scripts/clickables/clickable.gd" id="4_5tobp"]
+[ext_resource type="Texture2D" uid="uid://b0okjpthuxgre" path="res://assets/art/kitchen/plate-1-final-pos.PNG" id="4_chob6"]
+[ext_resource type="Texture2D" uid="uid://o2c4txetj0ty" path="res://assets/art/kitchen/plate-1-init-pos.PNG" id="6_uu8do"]
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="6_v4tsv"]
+[ext_resource type="Texture2D" uid="uid://clb8qmu5y31aw" path="res://assets/art/kitchen/plate-2-final-pos.PNG" id="7_oqsy7"]
+[ext_resource type="Texture2D" uid="uid://72lfewjvfssa" path="res://assets/art/kitchen/plate-2-init-pos.PNG" id="8_e3ro0"]
+[ext_resource type="Texture2D" uid="uid://db04fagiljmh8" path="res://assets/art/kitchen/plate-3-final-pos.PNG" id="9_hiiy7"]
+[ext_resource type="Texture2D" uid="uid://dbgu80152j5qb" path="res://assets/art/kitchen/plate-3-init-pos.PNG" id="10_5tobp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6jgj"]
+radius = 236.053
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcr6l"]
+shader = ExtResource("6_v4tsv")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwb7o"]
+shader = ExtResource("6_v4tsv")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chob6"]
+shader = ExtResource("6_v4tsv")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[node name="Do Dishes" type="Node2D"]
+script = ExtResource("1_oqsy7")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("2_mwb7o")
+
+[node name="Clickables" type="Node2D" parent="."]
+
+[node name="Plate1" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("4_5tobp")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/Plate1"]
+visible = false
+position = Vector2(940, 540)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("4_chob6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/Plate1"]
+position = Vector2(64, 416)
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickables/Plate1/StaticBody2D"]
+position = Vector2(250, 546)
+shape = SubResource("CircleShape2D_q6jgj")
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/Plate1/StaticBody2D"]
+material = SubResource("ShaderMaterial_tcr6l")
+position = Vector2(960, 540)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("6_uu8do")
+
+[node name="Plate2" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("4_5tobp")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/Plate2"]
+visible = false
+position = Vector2(960, 540)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("7_oqsy7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/Plate2"]
+position = Vector2(56, -46)
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickables/Plate2/StaticBody2D"]
+position = Vector2(250, 546)
+shape = SubResource("CircleShape2D_q6jgj")
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/Plate2/StaticBody2D"]
+material = SubResource("ShaderMaterial_mwb7o")
+position = Vector2(960, 540)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("8_e3ro0")
+
+[node name="Plate3" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("4_5tobp")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/Plate3"]
+visible = false
+position = Vector2(960, 540)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("9_hiiy7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/Plate3"]
+position = Vector2(94, -484)
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickables/Plate3/StaticBody2D"]
+position = Vector2(250, 546)
+shape = SubResource("CircleShape2D_q6jgj")
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/Plate3/StaticBody2D"]
+material = SubResource("ShaderMaterial_chob6")
+position = Vector2(960, 540)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("10_5tobp")
+
+[connection signal="input_event" from="Clickables/Plate1/StaticBody2D" to="Clickables/Plate1" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/Plate1/StaticBody2D" to="Clickables/Plate1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/Plate1/StaticBody2D" to="Clickables/Plate1" method="_on_mouse_exited"]
+[connection signal="input_event" from="Clickables/Plate2/StaticBody2D" to="Clickables/Plate2" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/Plate2/StaticBody2D" to="Clickables/Plate2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/Plate2/StaticBody2D" to="Clickables/Plate2" method="_on_mouse_exited"]
+[connection signal="input_event" from="Clickables/Plate3/StaticBody2D" to="Clickables/Plate3" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/Plate3/StaticBody2D" to="Clickables/Plate3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/Plate3/StaticBody2D" to="Clickables/Plate3" method="_on_mouse_exited"]

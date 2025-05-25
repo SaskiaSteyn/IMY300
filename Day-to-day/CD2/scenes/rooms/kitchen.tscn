@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://chmoj7chbptds"]
+
+[ext_resource type="Script" uid="uid://cwnpl2b1nweuy" path="res://scripts/rooms/kitchen.gd" id="1_2812u"]
+[ext_resource type="Texture2D" uid="uid://b55jitoq82yo8" path="res://assets/art/Kitchen.png" id="2_2812u"]
+[ext_resource type="PackedScene" uid="uid://ca4xrabdcv1s0" path="res://scenes/activities/kitchen_do_dishes.tscn" id="3_jtubd"]
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="4_njvo0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_581re"]
+resource_local_to_scene = true
+shader = ExtResource("4_njvo0")
+shader_parameter/width = 10
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 3.0
+shader_parameter/minimal_flickering_alpha = 0.0
+
+[sub_resource type="Curve2D" id="Curve2D_ikvlj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -607, 153, 0, 0, 0, 0, -190, 153)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orf8h"]
+size = Vector2(1179, 678)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whf2s"]
+size = Vector2(1171, 24)
+
+[node name="Room" type="StaticBody2D"]
+input_pickable = true
+script = ExtResource("1_2812u")
+room_name = 2
+
+[node name="RoomLayout" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_2812u")
+
+[node name="Bed-sprite" parent="." instance=ExtResource("3_jtubd")]
+material = SubResource("ShaderMaterial_581re")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ikvlj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-607, 153)
+rotation = 0.00164474
+rotates = false
+loop = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_orf8h")
+
+[node name="floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(0.5, 325)
+shape = SubResource("RectangleShape2D_whf2s")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

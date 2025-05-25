@@ -15,4 +15,7 @@ func _flip_sprite() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Global.is_walking:
+		sprite.play("walking")
+	else:
+		sprite.play("idle_side")

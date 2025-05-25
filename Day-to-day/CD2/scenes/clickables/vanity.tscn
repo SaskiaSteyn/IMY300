@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4um3ksx5j35c"]
+
+[ext_resource type="Script" uid="uid://bmdfcd74ox1er" path="res://scripts/clickables/clickable_core.gd" id="1_6pat7"]
+[ext_resource type="Texture2D" uid="uid://bahd077x8p3s3" path="res://assets/art/Bathroom.png" id="2_rcb8j"]
+[ext_resource type="Texture2D" uid="uid://o7oi8xqopr6m" path="res://assets/art/bathroom/clickables/vanity-alone.PNG" id="3_gp1x3"]
+[ext_resource type="Script" uid="uid://cbjyebro5h232" path="res://scripts/clickables/clickable.gd" id="4_nsfnp"]
+[ext_resource type="Texture2D" uid="uid://clfvwvsa56u8m" path="res://assets/art/bathroom/clickables/bottles-final-position.PNG" id="5_fcxyb"]
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="6_c504y"]
+[ext_resource type="Texture2D" uid="uid://wvec2ld3mfxq" path="res://assets/art/bathroom/clickables/bottles-init-position.PNG" id="7_emt7e"]
+[ext_resource type="Texture2D" uid="uid://de2tww6qc12i2" path="res://assets/art/bathroom/clickables/cup-final-position.PNG" id="8_lrwb7"]
+[ext_resource type="Texture2D" uid="uid://bmqiadhcbqmkc" path="res://assets/art/bathroom/clickables/cup-init-position.PNG" id="9_pupk8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcr6l"]
+shader = ExtResource("6_c504y")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yy1fk"]
+shader = ExtResource("6_c504y")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[node name="Vanity" type="Node2D"]
+script = ExtResource("1_6pat7")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background"]
+position = Vector2(1200, 415)
+scale = Vector2(2, 2)
+texture = ExtResource("2_rcb8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(1200, 415)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gp1x3")
+
+[node name="Clickables" type="Node2D" parent="."]
+
+[node name="Bottles" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("4_nsfnp")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/Bottles"]
+visible = false
+position = Vector2(1200, 415)
+scale = Vector2(2, 2)
+texture = ExtResource("5_fcxyb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/Bottles"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Clickables/Bottles/StaticBody2D"]
+position = Vector2(380, 380)
+polygon = PackedVector2Array(-176, 286, -181, 421, -77, 418, -84, 260, -132, 262)
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/Bottles/StaticBody2D"]
+material = SubResource("ShaderMaterial_tcr6l")
+position = Vector2(1200, 415)
+scale = Vector2(2, 2)
+texture = ExtResource("7_emt7e")
+
+[node name="Cup" type="Node2D" parent="Clickables" groups=["clickables"]]
+script = ExtResource("4_nsfnp")
+
+[node name="FinalPositionSprite" type="Sprite2D" parent="Clickables/Cup"]
+visible = false
+position = Vector2(1200, 415)
+scale = Vector2(2, 2)
+texture = ExtResource("8_lrwb7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Clickables/Cup"]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Clickables/Cup/StaticBody2D"]
+position = Vector2(380, 380)
+polygon = PackedVector2Array(-77, 345, -73, 418, -14, 416, -14, 339)
+
+[node name="Clickable" type="Sprite2D" parent="Clickables/Cup/StaticBody2D"]
+material = SubResource("ShaderMaterial_yy1fk")
+position = Vector2(1200, 415)
+scale = Vector2(2, 2)
+texture = ExtResource("9_pupk8")
+
+[connection signal="input_event" from="Clickables/Bottles/StaticBody2D" to="Clickables/Bottles" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/Bottles/StaticBody2D" to="Clickables/Bottles" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/Bottles/StaticBody2D" to="Clickables/Bottles" method="_on_mouse_exited"]
+[connection signal="input_event" from="Clickables/Cup/StaticBody2D" to="Clickables/Cup" method="_on_input_event"]
+[connection signal="mouse_entered" from="Clickables/Cup/StaticBody2D" to="Clickables/Cup" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Clickables/Cup/StaticBody2D" to="Clickables/Cup" method="_on_mouse_exited"]

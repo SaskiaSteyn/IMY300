@@ -20,10 +20,14 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_pressed("MoveCamUp"):
-		position.y -= PanSpeedKey
+		if ((position.y - get_viewport().size.y/2) < limit_top):
+			position.y -= PanSpeedKey
 	if Input.is_action_pressed("MoveCamDown"):
-		position.y += PanSpeedKey
+		if ((position.y + get_viewport().size.y/2) > limit_bottom):
+			position.y += PanSpeedKey
 	if Input.is_action_pressed("MoveCamLeft"):
-		position.x -= PanSpeedKey
+		if ((position.x - get_viewport().size.x/2) > limit_left):
+			position.x -= PanSpeedKey
 	if Input.is_action_pressed("MoveCamRight"):
-		position.x += PanSpeedKey
+		if ((position.x + get_viewport().size.x/2) < limit_right):
+			position.x += PanSpeedKey
