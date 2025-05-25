@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://delvjvtr82v24"]
+
+[ext_resource type="Script" uid="uid://dsl7enq0xq2g" path="res://scripts/activities/vanity.gd" id="1_tp5tx"]
+[ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="2_rb5x1"]
+[ext_resource type="Texture2D" uid="uid://b2e4f8ndor0eb" path="res://assets/art/vanity-sprite.png" id="3_i0vs2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulokf"]
+resource_local_to_scene = true
+shader = ExtResource("2_rb5x1")
+shader_parameter/width = 0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/flickering_speed = 0.0
+shader_parameter/minimal_flickering_alpha = 0.9
+
+[node name="Node2D" type="StaticBody2D" groups=["bathroom-chore", "bathroom_chore", "chores"]]
+input_pickable = true
+script = ExtResource("1_tp5tx")
+metadata/_custom_type_script = "uid://cley85c6m3tim"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ulokf")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i0vs2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-279, 99, -278, 187, -57, 186, -54, 88, -113, 78, -115, 56, -119, 39, -119, 18, -83, -16, -63, -47, -61, -88, -70, -125, -98, -151, -130, -163, -172, -164, -205, -149, -241, -103, -241, -37, -215, 0, -185, 20, -170, 36, -170, 53, -210, 60, -244, 52, -257, 69)

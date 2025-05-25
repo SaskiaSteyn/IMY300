@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhojr7ob0l6nd"]
+
+[ext_resource type="Script" uid="uid://bi3gjj25arswg" path="res://scripts/rooms/bathroom.gd" id="1_tj2xp"]
+[ext_resource type="Texture2D" uid="uid://bahd077x8p3s3" path="res://assets/art/Bathroom.png" id="2_tj2xp"]
+[ext_resource type="PackedScene" uid="uid://delvjvtr82v24" path="res://scenes/popups/vanity.tscn" id="3_tj2xp"]
+
+[sub_resource type="Curve2D" id="Curve2D_hlav7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -349, 153, 0, 0, 0, 0, -67, 153)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpp1v"]
+size = Vector2(677, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj2xp"]
+size = Vector2(662, 19)
+
+[node name="Bathroom" type="StaticBody2D"]
+script = ExtResource("1_tj2xp")
+room_name = 1
+metadata/_custom_type_script = "uid://bjwbbpl0hs148"
+
+[node name="RoomLayout" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tj2xp")
+
+[node name="vanity" parent="." instance=ExtResource("3_tj2xp")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hlav7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-349, 153)
+rotates = false
+loop = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_xpp1v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 324.5)
+shape = SubResource("RectangleShape2D_tj2xp")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="input_event" from="vanity" to="vanity" method="_on_input_event"]
+[connection signal="mouse_entered" from="vanity" to="vanity" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="vanity" to="vanity" method="_on_mouse_exited"]
