@@ -18,9 +18,15 @@ var loss_func
 var constant_func
 var clickable_finished_func
 
+var input_func = func():
+	is_playing_clickable_chore = true
+	var clickable_game_node = clickable_game.instantiate()
+	Global.trigger_popup.emit(clickable_game_node)
+
 var is_activity_doable: bool = false
 var is_player_in_room: bool = false
 var is_playing_clickable_chore: bool = false
+var chore_queued: bool = false
 
 func _init(gf, lf):
 	gain_func = gf
@@ -61,8 +67,22 @@ func _on_mouse_exited() -> void:
 	material.set_shader_parameter("width", 0)
 	material.set_shader_parameter("outline_color", Color(1, 1, 1, 1))
 	
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and !Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
+			Global.mouse_click()
+			input_func.call()
+		elif (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
+			chore_queued = true
+	
 func _clickable_chore_finished() -> void:
 	print("_clickable_chore_finished")
 	if is_playing_clickable_chore:
 		is_playing_clickable_chore = false
 		clickable_finished_func.call()
+		
+func _process(delta: float) -> void:
+	if chore_queued and !Global.is_walking:
+		chore_queued = false
+		input_func.call()
+		

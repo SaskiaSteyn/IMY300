@@ -28,6 +28,7 @@ var loss_fun = func(x):
 
 var unlockable_func_day_zero = func(): 
 	var key_scene = load("res://scenes/key.tscn").instantiate()
+	key_scene._set_unlocking_room(Global.Unlock_Room.BATHROOM)
 	Global.curr_room.add_child(key_scene)
 	
 var clickable_game_completed = func():
@@ -35,14 +36,14 @@ var clickable_game_completed = func():
 	AudioPlayer.playOnce(making_bed)
 	_make_bed()
 	was_done_today = true
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and !Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
-			Global.mouse_click()
-			is_playing_clickable_chore = true
-			var clickable_game_node = clickable_game.instantiate()
-			Global.trigger_popup.emit(clickable_game_node)
+	
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#if event is InputEventMouseButton:
+		#if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and !Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
+			#Global.mouse_click()
+			#is_playing_clickable_chore = true
+			#var clickable_game_node = clickable_game.instantiate()
+			#Global.trigger_popup.emit(clickable_game_node)
 			
 			
 func _make_bed() -> void:

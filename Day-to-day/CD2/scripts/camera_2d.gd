@@ -19,6 +19,8 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Global.is_paused:
+		return
 	if Input.is_action_pressed("MoveCamUp"):
 		if ((position.y - get_viewport().size.y/2) < limit_top):
 			position.y -= PanSpeedKey

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmdfcd74ox1er" path="res://scripts/clickables/clickable_core.gd" id="1_6pat7"]
 [ext_resource type="Texture2D" uid="uid://bahd077x8p3s3" path="res://assets/art/Bathroom.png" id="2_rcb8j"]
-[ext_resource type="Texture2D" uid="uid://o7oi8xqopr6m" path="res://assets/art/bathroom/clickables/vanity-alone.PNG" id="3_gp1x3"]
+[ext_resource type="Texture2D" uid="uid://de6s55d4r3l0j" path="res://assets/art/bathroom/clickables/vanity-alone.PNG" id="3_gp1x3"]
 [ext_resource type="Script" uid="uid://cbjyebro5h232" path="res://scripts/clickables/clickable.gd" id="4_nsfnp"]
 [ext_resource type="Texture2D" uid="uid://clfvwvsa56u8m" path="res://assets/art/bathroom/clickables/bottles-final-position.PNG" id="5_fcxyb"]
 [ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="6_c504y"]

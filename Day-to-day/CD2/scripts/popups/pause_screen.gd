@@ -4,6 +4,7 @@ func _unhandled_input(event) -> void:
 	if event is InputEventKey:
 		if(event.pressed and event.keycode == KEY_ESCAPE):
 			await get_tree().create_timer(0.1).timeout
+			Global.in_clickable = false
 			Global.is_paused = false
 			queue_free()
 

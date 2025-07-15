@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 class_name Room
 
 @onready var path_follow : PathFollow2D = $Path2D/PathFollow2D
@@ -16,8 +16,10 @@ var exit_point_vector: Vector2 = Vector2(0,0)
 
 func _ready()-> void:
 	print("Readying room")
-	Global.player_enter_room.connect(_player_enter_room.bind())
-	Global.player_exit_room.connect(_player_exit_room.bind())
+	#Global.player_enter_room.connect(_player_enter_room.bind())
+	#Global.player_exit_room.connect(_player_exit_room.bind())
+	self.body_entered.connect(_on_body_entered.bind())
+	self.body_exited.connect(_on_body_exited.bind())
 	
 	var children = get_children()
 	
@@ -30,24 +32,62 @@ func _ready()-> void:
 		is_player_in_room = true;
 		for chore in chores:
 			chore.is_player_in_room = true
-		player = load("res://scenes/player.tscn").instantiate()
-		path_follow.add_child(player);
-		Global.is_walking = true
+		#player = load("res://scenes/player.tscn").instantiate()
+		#path_follow.add_child(player);
+		#Global.is_walking = true
 		Global.curr_room = self
 		
-func _player_enter_room()-> void: 
-	if(Global.going_to_room == room_name):
-		print("player entering room")
-		player = load("res://scenes/player.tscn").instantiate()
-		path_follow.add_child(player)
+#func _player_enter_room()-> void: 
+	#if(Global.going_to_room == room_name):
+		#print("player entering room")
+		##player = load("res://scenes/player.tscn").instantiate()
+		##path_follow.add_child(player)
+		#is_player_in_room = true
+		#for chore in chores:
+			#chore.is_player_in_room = true
+		#Global.curr_room = self
+	#
+#func _player_exit_room()-> void:
+	#if(is_player_in_room): 
+		#print("Player exiting room")
+		#is_exiting = true
+		##player._flip_sprite()
+		##path.curve.add_point(exit_point_vector)
+		
+func _process(delta: float) -> void:
+	if(is_player_in_room):
+		var value: float = (Global.Unlock_Room.size() - Global.unlockedRooms)/Global.Unlock_Room.size()
+		var modifier = remap(value, 0, 1, 150, 0)
+			
+		if(is_exiting):
+			is_player_in_room = false
+			for chore in chores:
+				chore.is_player_in_room = false
+			is_exiting = false
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if  event is InputEventMouseButton:
+		if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and !is_player_in_room and !Global.is_walking and !Global.in_clickable):
+			print(room_name)
+			Global.mouse_click()
+			Global.going_to_room = room_name
+			Global.player_exit_room.emit()
+			Global.is_walking = true
+		
+func _on_body_entered(body: Node2D) -> void:
+	print(body.name + " entered " + self.name)
+	if body.name == "Player":
+		print("player entered " + self.name)
 		is_player_in_room = true
 		for chore in chores:
 			chore.is_player_in_room = true
 		Global.curr_room = self
-	
-func _player_exit_room()-> void:
-	if(is_player_in_room): 
-		print("Player exiting room")
-		is_exiting = true
-		player._flip_sprite()
-		path.curve.add_point(exit_point_vector)
+
+func _on_body_exited(body: Node2D) -> void:
+	print(body.name + " exited " + self.name)
+	if body.name == "Player":
+		print("player exited " + self.name)
+		is_player_in_room = false
+		for chore in chores:
+			chore.is_player_in_room = false
+		is_exiting = false

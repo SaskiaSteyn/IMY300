@@ -68,9 +68,9 @@ size = Vector2(1179, 678)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whf2s"]
 size = Vector2(1171, 24)
 
-[node name="Room" type="StaticBody2D"]
-input_pickable = true
+[node name="Room" type="Area2D"]
 script = ExtResource("1_kcc0f")
+metadata/_custom_type_script = "uid://bjwbbpl0hs148"
 
 [node name="RoomLayout" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -104,4 +104,6 @@ collision_mask = 2
 position = Vector2(0.5, 325)
 shape = SubResource("RectangleShape2D_whf2s")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

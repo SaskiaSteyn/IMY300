@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="1_ct6jm"]
 [ext_resource type="Script" uid="uid://bg63qpso30qfi" path="res://scripts/activities/kitchen_do_dishes.gd" id="2_2qboa"]
-[ext_resource type="Texture2D" uid="uid://ce32ps6wd4cqv" path="res://assets/art/kitchen/counter-sprite.PNG" id="3_ct6jm"]
+[ext_resource type="Texture2D" uid="uid://ce32ps6wd4cqv" path="res://assets/art/kitchen/counter-sprite.png" id="3_ct6jm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qf5qi"]
 resource_local_to_scene = true

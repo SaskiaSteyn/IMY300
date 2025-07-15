@@ -16,7 +16,8 @@ size = Vector2(677, 680)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj2xp"]
 size = Vector2(662, 19)
 
-[node name="Bathroom" type="StaticBody2D"]
+[node name="Bathroom" type="Area2D"]
+input_pickable = false
 script = ExtResource("1_tj2xp")
 room_name = 1
 metadata/_custom_type_script = "uid://bjwbbpl0hs148"
@@ -47,6 +48,8 @@ collision_mask = 2
 position = Vector2(0, 324.5)
 shape = SubResource("RectangleShape2D_tj2xp")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="input_event" from="vanity" to="vanity" method="_on_input_event"]
 [connection signal="mouse_entered" from="vanity" to="vanity" method="_on_mouse_entered"]

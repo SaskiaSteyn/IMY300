@@ -37,6 +37,4 @@ func _eval_time() -> void:
 				print("playing evening_to_night")
 				animationPlayer.play("evening_to_night")
 		_:
-			print("no match for time")
-#		f2c1cb
-#acc3e6
+			return

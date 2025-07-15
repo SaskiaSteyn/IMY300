@@ -7,6 +7,7 @@ extends Activity
 
 func _init():
 	super(gain_fun, loss_fun)
+	input_func = input_func_event
 	energy_streak_map = {
 		0: 5,
 		1: 1,
@@ -30,19 +31,17 @@ var loss_fun = func(x):
 var progress_day = func(): 
 	#aGlobal.change_energy.emit(5)
 	Global.progress_day.emit()
+	
+var input_func_event = func():
+	AudioPlayer.playOnce(sleeping_sound)
+	_make_bed()
+	was_done_today = true
 
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and !Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
-			Global.mouse_click()
-			AudioPlayer.playOnce(sleeping_sound)
-			#var tween = get_tree().create_tween()
-			#tween.tween_property(sprite, "rotation_degrees", 360, 1).set_trans(Tween.TRANS_SINE)
-			#tween.tween_property(sprite, "rotation_degrees", 0, 1).set_trans(Tween.TRANS_SINE)
-			#tween.tween_callback(_make_bed)
-			_make_bed()
-			was_done_today = true
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#if event is InputEventMouseButton:
+		#if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and !Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
+			#Global.mouse_click()
+			
 			
 			
 func _make_bed() -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxp5i0xbdcbp7"
-path="res://.godot/imported/vanity-final.PNG-4e62e7e8432f77a6e07f2839458430d8.ctex"
+uid="uid://dtb8h0cbkp42i"
+path="res://.godot/imported/vanity-final.png-c40347b7c2a35b728febc821a88f78f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/bathroom/clickables/vanity-final.PNG"
-dest_files=["res://.godot/imported/vanity-final.PNG-4e62e7e8432f77a6e07f2839458430d8.ctex"]
+source_file="res://assets/art/bathroom/clickables/vanity-final.png"
+dest_files=["res://.godot/imported/vanity-final.png-c40347b7c2a35b728febc821a88f78f2.ctex"]
 
 [params]
 

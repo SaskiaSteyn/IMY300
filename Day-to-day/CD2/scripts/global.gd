@@ -21,6 +21,7 @@ signal clickable_clicked
 
 var is_paused: bool = false
 var in_clickable: bool = false
+var can_autosleep: bool = true
 
 var unlockedRooms: float = 0.0
 

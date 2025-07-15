@@ -1,23 +1,78 @@
-[gd_scene load_steps=33 format=3 uid="uid://0exf3jl2v3qp"]
+[gd_scene load_steps=89 format=4 uid="uid://0exf3jl2v3qp"]
 
 [ext_resource type="Script" uid="uid://dr6q78nardhmt" path="res://scripts/camera_2d.gd" id="1_72e8q"]
 [ext_resource type="PackedScene" uid="uid://cvtqrtdmmom7f" path="res://scenes/rooms/bedroom.tscn" id="1_wjnv8"]
 [ext_resource type="Script" uid="uid://grkkm3121iaj" path="res://scripts/game_manager.gd" id="1_ygxny"]
+[ext_resource type="Texture2D" uid="uid://brrdyypgd0uje" path="res://icon.svg" id="2_yu8cv"]
 [ext_resource type="Script" uid="uid://ccvvmq7jpno2" path="res://scripts/progress_bar.gd" id="3_d2op2"]
 [ext_resource type="Shader" uid="uid://boj46sw1xh6m8" path="res://shaders/screen_saturation.gdshader" id="3_ipu61"]
 [ext_resource type="PackedScene" uid="uid://7ld0jp32wueg" path="res://scenes/rooms/bathroom-layout.tscn" id="3_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://chmoj7chbptds" path="res://scenes/rooms/kitchen.tscn" id="4_70vka"]
 [ext_resource type="Script" uid="uid://dprluq7fsj0oh" path="res://shaders/saturation_canvas.gd" id="4_ipu61"]
+[ext_resource type="TileSet" uid="uid://bnkrr601u88ac" path="res://assets/art/new_tile_set.tres" id="6_ibnub"]
 [ext_resource type="Shader" uid="uid://drwws7f0m4k2q" path="res://shaders/sky_bg.gdshader" id="6_ihbck"]
 [ext_resource type="Script" uid="uid://dq07b6p221khr" path="res://scripts/sky_background.gd" id="6_vnsdt"]
+[ext_resource type="PackedScene" uid="uid://dhj0x2hesirct" path="res://scenes/player_walking.tscn" id="7_307no"]
+[ext_resource type="Texture2D" uid="uid://cp31ctutc1dc2" path="res://assets/art/door-frame-tiles/bottom-middle.png" id="7_dcudo"]
+[ext_resource type="Texture2D" uid="uid://e2m1ep3rpoom" path="res://assets/art/door-frame-tiles/left-bottom-corner.png" id="8_307no"]
 [ext_resource type="Texture2D" uid="uid://lodfwjdiwxot" path="res://assets/art/solid rect.png" id="8_wjob3"]
 [ext_resource type="FontFile" uid="uid://jshayppk6c0q" path="res://assets/fonts/Single_Day/SingleDay-Regular.ttf" id="9_2l77h"]
 [ext_resource type="Texture2D" uid="uid://siv8atst8n2a" path="res://assets/art/holy rect.png" id="9_8xp80"]
+[ext_resource type="Texture2D" uid="uid://d0y2bhcw8kp6x" path="res://assets/art/door-frame-tiles/left-middle.png" id="9_rr87q"]
+[ext_resource type="Texture2D" uid="uid://ivdl3xehypuf" path="res://assets/art/door-frame-tiles/left-top-corner.png" id="10_dp0eu"]
 [ext_resource type="Script" uid="uid://dftk7hjd46sb5" path="res://scripts/ui_clock.gd" id="10_nqdth"]
 [ext_resource type="Texture2D" uid="uid://0cqs7ystrcy1" path="res://assets/art/coloured rect.png" id="10_sp04v"]
+[ext_resource type="Texture2D" uid="uid://buy350vs78cga" path="res://assets/art/door-frame-tiles/right-bottom-corner.png" id="11_urnot"]
+[ext_resource type="Texture2D" uid="uid://bnxnmh7oki3h2" path="res://assets/art/door-frame-tiles/right-middle.png" id="12_4e2rb"]
+[ext_resource type="Texture2D" uid="uid://bp3tjtpgwe2vk" path="res://assets/art/door-frame-tiles/right-top-corner.png" id="13_6vdpn"]
 [ext_resource type="Texture2D" uid="uid://w0xjdf23q56g" path="res://assets/art/clock.png" id="13_8xp80"]
+[ext_resource type="Texture2D" uid="uid://dq7qkq8fqvnig" path="res://assets/art/door-frame-tiles/top-middle.png" id="14_jmxl0"]
 [ext_resource type="FontFile" uid="uid://6orknuqy5513" path="res://assets/fonts/DigitalNumbers/DigitalNumbers-Regular.ttf" id="14_sp04v"]
 [ext_resource type="Script" uid="uid://bwb13v3lnu6qg" path="res://scripts/popups/popups.gd" id="18_ikqpi"]
+[ext_resource type="Texture2D" uid="uid://bgtepq3lvhenm" path="res://assets/art/house-tiles/balcony-bottom-start.png" id="30_mkn3m"]
+[ext_resource type="Texture2D" uid="uid://dvi8hdn5q5lid" path="res://assets/art/house-tiles/balcony-end-bottom.png" id="31_wpxwh"]
+[ext_resource type="Texture2D" uid="uid://dm8m22pk3nv48" path="res://assets/art/house-tiles/left-roof-top.png" id="32_jk70c"]
+[ext_resource type="Texture2D" uid="uid://cg7xoppt5dpw3" path="res://assets/art/house-tiles/right-panel.png" id="33_t42xu"]
+[ext_resource type="Texture2D" uid="uid://1hu3kiq12bws" path="res://assets/art/house-tiles/right-roof-bottom.png" id="34_34vfp"]
+[ext_resource type="Texture2D" uid="uid://itego5psbf0h" path="res://assets/art/house-tiles/right-roof-top.png" id="35_cp8wt"]
+[ext_resource type="Texture2D" uid="uid://1dbslyqxbs17" path="res://assets/art/house-tiles/roof-middle-bottom.png" id="36_1w5q7"]
+[ext_resource type="Texture2D" uid="uid://bytepnjdu4b5h" path="res://assets/art/house-tiles/roof-middle-top.png" id="37_ssxou"]
+[ext_resource type="Texture2D" uid="uid://wbwoiia6b0a6" path="res://assets/art/house-tiles/balcony-end-top.png" id="38_jm67w"]
+[ext_resource type="Texture2D" uid="uid://c1ou7po1kfhgx" path="res://assets/art/house-tiles/balcony-middle-bottom.png" id="39_trxsc"]
+[ext_resource type="Texture2D" uid="uid://baxwk5bv3ednt" path="res://assets/art/house-tiles/balcony-start-top.png" id="40_cg2cl"]
+[ext_resource type="Texture2D" uid="uid://cku0ky35vuj11" path="res://assets/art/house-tiles/balcony-top.png" id="41_meg3e"]
+[ext_resource type="Texture2D" uid="uid://da10u323nskoq" path="res://assets/art/house-tiles/floor.png" id="42_aor82"]
+[ext_resource type="Texture2D" uid="uid://upvici8rsyw7" path="res://assets/art/house-tiles/join.png" id="43_krfhu"]
+[ext_resource type="Texture2D" uid="uid://qhra8pydu7gs" path="res://assets/art/house-tiles/left-panel.png" id="44_x3a3x"]
+[ext_resource type="Texture2D" uid="uid://cjveqaqee8my6" path="res://assets/art/house-tiles/left-roof-bottom.png" id="45_sgocm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5wboo"]
+texture = ExtResource("2_yu8cv")
+texture_region_size = Vector2i(1, 1)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+0:0/1 = 1
+0:0/1/custom_data_0 = true
+0:0/1/custom_data_1 = 1
+0:0/2 = 2
+0:0/2/custom_data_0 = true
+0:0/2/custom_data_1 = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_307no"]
+texture = ExtResource("2_yu8cv")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/modulate = Color(1, 0.2, 0.0470588, 1)
+
+[sub_resource type="TileSet" id="TileSet_6de02"]
+tile_size = Vector2i(128, 128)
+custom_data_layer_0/name = "standable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "room"
+custom_data_layer_1/type = 2
+sources/1 = SubResource("TileSetAtlasSource_5wboo")
+sources/5 = SubResource("TileSetAtlasSource_307no")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vnsdt"]
 shader = ExtResource("6_ihbck")
@@ -408,6 +463,660 @@ shader = ExtResource("3_ipu61")
 shader_parameter/threshold = 0.0
 shader_parameter/delta = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sgdes"]
+texture = ExtResource("7_dcudo")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ibep1"]
+texture = ExtResource("8_307no")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q875d"]
+texture = ExtResource("9_rr87q")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvo3n"]
+texture = ExtResource("10_dp0eu")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1vioj"]
+texture = ExtResource("11_urnot")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g2o8j"]
+texture = ExtResource("12_4e2rb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oojmo"]
+texture = ExtResource("13_6vdpn")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5noht"]
+texture = ExtResource("14_jmxl0")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4v0b0"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_sgdes")
+sources/1 = SubResource("TileSetAtlasSource_ibep1")
+sources/2 = SubResource("TileSetAtlasSource_q875d")
+sources/3 = SubResource("TileSetAtlasSource_dvo3n")
+sources/4 = SubResource("TileSetAtlasSource_1vioj")
+sources/5 = SubResource("TileSetAtlasSource_g2o8j")
+sources/6 = SubResource("TileSetAtlasSource_oojmo")
+sources/7 = SubResource("TileSetAtlasSource_5noht")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pk1le"]
+texture = ExtResource("30_mkn3m")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1al3e"]
+texture = ExtResource("31_wpxwh")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sh8gf"]
+texture = ExtResource("32_jk70c")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4h0lf"]
+texture = ExtResource("33_t42xu")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ikos"]
+texture = ExtResource("34_34vfp")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjtuq"]
+texture = ExtResource("35_cp8wt")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3f3c0"]
+texture = ExtResource("36_1w5q7")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7q0na"]
+texture = ExtResource("37_ssxou")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aduj5"]
+texture = ExtResource("38_jm67w")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8gia"]
+texture = ExtResource("39_trxsc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ids5a"]
+texture = ExtResource("40_cg2cl")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr7ox"]
+texture = ExtResource("41_meg3e")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3fkkw"]
+texture = ExtResource("42_aor82")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8g0k1"]
+texture = ExtResource("43_krfhu")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o2grk"]
+texture = ExtResource("44_x3a3x")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b02dr"]
+texture = ExtResource("45_sgocm")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gpokl"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_pk1le")
+sources/1 = SubResource("TileSetAtlasSource_1al3e")
+sources/2 = SubResource("TileSetAtlasSource_aduj5")
+sources/3 = SubResource("TileSetAtlasSource_l8gia")
+sources/4 = SubResource("TileSetAtlasSource_ids5a")
+sources/5 = SubResource("TileSetAtlasSource_qr7ox")
+sources/6 = SubResource("TileSetAtlasSource_3fkkw")
+sources/7 = SubResource("TileSetAtlasSource_8g0k1")
+sources/8 = SubResource("TileSetAtlasSource_o2grk")
+sources/9 = SubResource("TileSetAtlasSource_b02dr")
+sources/10 = SubResource("TileSetAtlasSource_sh8gf")
+sources/11 = SubResource("TileSetAtlasSource_4h0lf")
+sources/12 = SubResource("TileSetAtlasSource_3ikos")
+sources/13 = SubResource("TileSetAtlasSource_pjtuq")
+sources/14 = SubResource("TileSetAtlasSource_3f3c0")
+sources/15 = SubResource("TileSetAtlasSource_7q0na")
+
 [node name="Main game" type="Node"]
 
 [node name="Gameplay" type="Node" parent="."]
@@ -417,32 +1126,47 @@ script = ExtResource("1_ygxny")
 
 [node name="Level Assets" type="Node2D" parent="."]
 
+[node name="Background" type="TileMapLayer" parent="Level Assets"]
+visible = false
+tile_set = ExtResource("6_ibnub")
+
+[node name="Midground" type="TileMapLayer" parent="Level Assets"]
+visible = false
+tile_map_data = PackedByteArray("AADw/wYABQAAAAAAAADy/wYAAQAAAAAAAgDz/wYAAQAAAAAAAgD0/wYAAQAAAAAAAgD1/wYAAQAAAAAAAgD2/wYAAQAAAAAAAgD3/wYAAQAAAAAAAgD4/wYAAQAAAAAAAgD5/wYAAQAAAAAAAgD6/wYABQAAAAAAAAD7/wYABQAAAAAAAAD8/wYAAQAAAAAAAQD9/wYAAQAAAAAAAQD+/wYAAQAAAAAAAQD//wYAAQAAAAAAAQAAAAYAAQAAAAAAAQABAAYABQAAAAAAAAACAAYABQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAAYAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYABQAAAAAAAADx/wYAAQAAAAAAAgA=")
+tile_set = SubResource("TileSet_6de02")
+
 [node name="Bedroom" parent="Level Assets" instance=ExtResource("1_wjnv8")]
-position = Vector2(960, 540)
+position = Vector2(960, 579)
+scale = Vector2(1.1, 1.09812)
 starts_with_player = true
 
 [node name="Bathroom" parent="Level Assets" instance=ExtResource("3_wi4c7")]
 visible = false
-position = Vector2(31, 540)
+position = Vector2(-191, 573)
+scale = Vector2(1.1, 1.1)
 input_pickable = true
 
 [node name="Kitchen" parent="Level Assets" instance=ExtResource("4_70vka")]
 visible = false
-position = Vector2(-898, 540)
+position = Vector2(-1325, 576)
+scale = Vector2(1.1, 1.1)
 
-[node name="Camera2D" type="Camera2D" parent="Level Assets"]
-position = Vector2(960, 540)
-limit_left = -2500
-limit_top = 0
-limit_right = 2500
-limit_bottom = 1000
+[node name="Player" parent="Level Assets" instance=ExtResource("7_307no")]
+position = Vector2(928, 837)
+scale = Vector2(1.1, 1.1)
+
+[node name="Camera2D" type="Camera2D" parent="Level Assets/Player"]
+visible = false
+position = Vector2(465.455, -270)
+scale = Vector2(0.909091, 0.909091)
+offset = Vector2(-464, 0)
 script = ExtResource("1_72e8q")
 
-[node name="BackgroundSky" type="CanvasLayer" parent="Level Assets/Camera2D"]
+[node name="BackgroundSky" type="CanvasLayer" parent="Level Assets/Player/Camera2D"]
 layer = -5
 script = ExtResource("6_vnsdt")
 
-[node name="SkyBackground" type="ColorRect" parent="Level Assets/Camera2D/BackgroundSky"]
+[node name="SkyBackground" type="ColorRect" parent="Level Assets/Player/Camera2D/BackgroundSky"]
 show_behind_parent = true
 z_index = -1
 z_as_relative = false
@@ -451,30 +1175,33 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.996078, 0.870588, 0.886275, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level Assets/Camera2D/BackgroundSky"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level Assets/Player/Camera2D/BackgroundSky"]
 libraries = {
 &"": SubResource("AnimationLibrary_6de02")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Level Assets/Camera2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Level Assets/Player/Camera2D"]
 layer = -3
 follow_viewport_enabled = true
 
-[node name="Polygon2D" type="Polygon2D" parent="Level Assets/Camera2D/CanvasLayer"]
+[node name="Polygon2D" type="Polygon2D" parent="Level Assets/Player/Camera2D/CanvasLayer"]
+visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1600, 140, -1600, 140, -1620, 260, -1600, 260, -1600, 1080, -1420, 1080, -1420, 260, 1620, 260)
 
-[node name="Polygon2D2" type="Polygon2D" parent="Level Assets/Camera2D/CanvasLayer"]
+[node name="Polygon2D2" type="Polygon2D" parent="Level Assets/Player/Camera2D/CanvasLayer"]
+visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1530, 260, 1530, 840, -1600, 840, -1600, 1080, 1600, 1080, 1600, 260)
 
-[node name="Polygon2D3" type="Polygon2D" parent="Level Assets/Camera2D/CanvasLayer"]
+[node name="Polygon2D3" type="Polygon2D" parent="Level Assets/Player/Camera2D/CanvasLayer"]
+visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(548, 869, 562, 208, -1190, 179, -1190, 938)
 
-[node name="UI" type="CanvasLayer" parent="Level Assets/Camera2D"]
+[node name="UI" type="CanvasLayer" parent="Level Assets/Player/Camera2D"]
 
-[node name="SaturationShader" type="ColorRect" parent="Level Assets/Camera2D/UI"]
+[node name="SaturationShader" type="ColorRect" parent="Level Assets/Player/Camera2D/UI"]
 material = SubResource("ShaderMaterial_2l77h")
 anchors_preset = 15
 anchor_right = 1.0
@@ -485,7 +1212,7 @@ mouse_filter = 1
 color = Color(1, 1, 1, 0)
 script = ExtResource("4_ipu61")
 
-[node name="ProgressBar" type="TextureProgressBar" parent="Level Assets/Camera2D/UI"]
+[node name="ProgressBar" type="TextureProgressBar" parent="Level Assets/Player/Camera2D/UI"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -504,7 +1231,7 @@ texture_progress = ExtResource("10_sp04v")
 tint_under = Color(0.834614, 0.834614, 0.834614, 1)
 script = ExtResource("3_d2op2")
 
-[node name="MarginContainer" type="MarginContainer" parent="Level Assets/Camera2D/UI"]
+[node name="MarginContainer" type="MarginContainer" parent="Level Assets/Player/Camera2D/UI"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -518,14 +1245,14 @@ grow_vertical = 0
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Label" type="Label" parent="Level Assets/Camera2D/UI/MarginContainer"]
+[node name="Label" type="Label" parent="Level Assets/Player/Camera2D/UI/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("9_2l77h")
 theme_override_font_sizes/font_size = 30
 text = "ESC to pause game"
 horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Level Assets/Camera2D/UI"]
+[node name="PanelContainer" type="PanelContainer" parent="Level Assets/Player/Camera2D/UI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -536,7 +1263,7 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_sp04v")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Level Assets/Camera2D/UI/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Level Assets/Player/Camera2D/UI/PanelContainer"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("14_sp04v")
 theme_override_font_sizes/normal_font_size = 35
@@ -544,15 +1271,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_nqdth")
 
-[node name="Popups" type="CanvasLayer" parent="Level Assets/Camera2D"]
+[node name="Popups" type="CanvasLayer" parent="Level Assets/Player/Camera2D"]
 layer = 2
 visible = false
 script = ExtResource("18_ikqpi")
 
-[node name="PopupSlot" type="CanvasLayer" parent="Level Assets/Camera2D/Popups"]
+[node name="PopupSlot" type="CanvasLayer" parent="Level Assets/Player/Camera2D/Popups"]
 layer = 2
 
-[node name="PopupSaturationShader" type="ColorRect" parent="Level Assets/Camera2D/Popups"]
+[node name="PopupSaturationShader" type="ColorRect" parent="Level Assets/Player/Camera2D/Popups"]
 material = SubResource("ShaderMaterial_ikqpi")
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -560,4 +1287,13 @@ mouse_filter = 1
 color = Color(1, 1, 1, 0)
 script = ExtResource("4_ipu61")
 
-[connection signal="value_changed" from="Level Assets/Camera2D/UI/ProgressBar" to="Level Assets/Camera2D/UI/ProgressBar" method="_on_value_changed"]
+[node name="Foreground" type="TileMapLayer" parent="Level Assets"]
+tile_map_data = PackedByteArray("AAACAAEAAwAAAAAAAAACAAIAAgAAAAAAAAACAAMAAgAAAAAAAAACAAQAAgAAAAAAAAACAAUAAgAAAAAAAAACAAYAAgAAAAAAAAACAAcAAQAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcABAAAAAAAAAAMAAYABQAAAAAAAAAMAAUABQAAAAAAAAAMAAQABQAAAAAAAAAMAAMABQAAAAAAAAAMAAIABQAAAAAAAAAMAAEABgAAAAAAAAADAAEABwAAAAAAAAAEAAEABwAAAAAAAAAFAAEABwAAAAAAAAAGAAEABwAAAAAAAAAHAAEABwAAAAAAAAAIAAEABwAAAAAAAAAJAAEABwAAAAAAAAAKAAEABwAAAAAAAAALAAEABwAAAAAAAAAAAAcAAAAAAAAAAAD//wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD7/wEAAwAAAAAAAAD7/wcAAQAAAAAAAAD7/wYAAgAAAAAAAAD7/wUAAgAAAAAAAAD7/wQAAgAAAAAAAAD7/wMAAgAAAAAAAAD7/wIAAgAAAAAAAAABAAcABAAAAAAAAAABAAYABQAAAAAAAAABAAUABQAAAAAAAAABAAQABQAAAAAAAAABAAMABQAAAAAAAAABAAIABQAAAAAAAAABAAEABgAAAAAAAAAAAAEABwAAAAAAAAD//wEABwAAAAAAAAD+/wEABwAAAAAAAAD9/wEABwAAAAAAAAD8/wEABwAAAAAAAADx/wcAAAAAAAAAAADy/wcAAAAAAAAAAADz/wcAAAAAAAAAAAD0/wcAAAAAAAAAAAD1/wcAAAAAAAAAAAD2/wcAAAAAAAAAAAD3/wcAAAAAAAAAAAD4/wcAAAAAAAAAAAD5/wcAAAAAAAAAAAD6/wcABAAAAAAAAAD6/wYABQAAAAAAAAD6/wUABQAAAAAAAAD6/wQABQAAAAAAAAD6/wMABQAAAAAAAAD6/wIABQAAAAAAAAD6/wEABgAAAAAAAAD5/wEABwAAAAAAAAD4/wEABwAAAAAAAAD3/wEABwAAAAAAAAD2/wEABwAAAAAAAAD1/wEABwAAAAAAAAD0/wEABwAAAAAAAADz/wEABwAAAAAAAADy/wEABwAAAAAAAADx/wEABwAAAAAAAADw/wcAAQAAAAAAAADw/wYAAgAAAAAAAADw/wUAAgAAAAAAAADw/wQAAgAAAAAAAADw/wMAAgAAAAAAAADw/wIAAgAAAAAAAADw/wEAAwAAAAAAAADx/wgABwAAAAAAAADy/wgABwAAAAAAAADz/wgABwAAAAAAAAD0/wgABwAAAAAAAAD1/wgABwAAAAAAAAD2/wgABwAAAAAAAAD3/wgABwAAAAAAAAD4/wgABwAAAAAAAAD5/wgABwAAAAAAAAD6/wgABwAAAAAAAAD7/wgABwAAAAAAAAD8/wgABwAAAAAAAAD9/wgABwAAAAAAAADx/w4AAAAAAAAAAADy/w4AAAAAAAAAAADz/w4AAAAAAAAAAAD0/w4AAAAAAAAAAAD1/w4AAAAAAAAAAAD2/w4AAAAAAAAAAAD3/w4AAAAAAAAAAAD4/w4AAAAAAAAAAAD5/w4AAAAAAAAAAAD6/w4AAAAAAAAAAAD7/w4AAAAAAAAAAAD8/w4AAAAAAAAAAAD9/w4AAAAAAAAAAADw/w4AAQAAAAAAAADw/wgAAwAAAAAAAADw/wkAAgAAAAAAAADw/woAAgAAAAAAAADw/wsAAgAAAAAAAADw/wwAAgAAAAAAAADw/w0AAgAAAAAAAAD+/wgABgAAAAAAAAD+/w4ABAAAAAAAAAD+/wkABQAAAAAAAAD+/woABQAAAAAAAAD+/wsABQAAAAAAAAD+/wwABQAAAAAAAAD+/w0ABQAAAAAAAAAMAAkABQAAAAAAAAAMAAoABQAAAAAAAAAMAAsABQAAAAAAAAAMAAwABQAAAAAAAAAMAA0ABQAAAAAAAAAMAAgABgAAAAAAAAALAAgABwAAAAAAAAAKAAgABwAAAAAAAAAJAAgABwAAAAAAAAAIAAgABwAAAAAAAAAHAAgABwAAAAAAAAAGAAgABwAAAAAAAAAFAAgABwAAAAAAAAAEAAgABwAAAAAAAAADAAgABwAAAAAAAAACAAgABwAAAAAAAAABAAgABwAAAAAAAAAAAAgABwAAAAAAAAAMAA4ABAAAAAAAAAD//wgAAwAAAAAAAAD//wkAAgAAAAAAAAD//woAAgAAAAAAAAD//wsAAgAAAAAAAAD//wwAAgAAAAAAAAD//w0AAgAAAAAAAAD//w4AAQAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_4v0b0")
+collision_enabled = false
+
+[node name="House Frame" type="TileMapLayer" parent="Level Assets"]
+tile_map_data = PackedByteArray("AADv/wAACQAAAAAAAADv////CgAAAAAAAADw/wAADgAAAAAAAADx/wAADgAAAAAAAADy/wAADgAAAAAAAADz/wAADgAAAAAAAAD0/wAADgAAAAAAAAD1/wAADgAAAAAAAAD2/wAADgAAAAAAAAD3/wAADgAAAAAAAAD4/wAADgAAAAAAAAD5/wAADgAAAAAAAAD8/wAADgAAAAAAAAD7/wAADgAAAAAAAAD6/wAADgAAAAAAAAD9/wAADgAAAAAAAAD+/wAADgAAAAAAAAD//wAADgAAAAAAAAAAAAAADgAAAAAAAAABAAAADgAAAAAAAAACAAAADgAAAAAAAAADAAAADgAAAAAAAAAEAAAADgAAAAAAAAAFAAAADgAAAAAAAAAGAAAADgAAAAAAAAAHAAAADgAAAAAAAAAIAAAADgAAAAAAAAAJAAAADgAAAAAAAAAKAAAADgAAAAAAAAALAAAADgAAAAAAAAAMAAAADgAAAAAAAAANAAAADAAAAAAAAADw////DwAAAAAAAADx////DwAAAAAAAADy////DwAAAAAAAADz////DwAAAAAAAAD0////DwAAAAAAAAD1////DwAAAAAAAAD2////DwAAAAAAAAD3////DwAAAAAAAAD4////DwAAAAAAAAD5////DwAAAAAAAAD6////DwAAAAAAAAD7////DwAAAAAAAAD8////DwAAAAAAAAD9////DwAAAAAAAAD+////DwAAAAAAAAD/////DwAAAAAAAAAAAP//DwAAAAAAAAABAP//DwAAAAAAAAACAP//DwAAAAAAAAADAP//DwAAAAAAAAAEAP//DwAAAAAAAAAFAP//DwAAAAAAAAAGAP//DwAAAAAAAAAHAP//DwAAAAAAAAAIAP//DwAAAAAAAAAJAP//DwAAAAAAAAAKAP//DwAAAAAAAAALAP//DwAAAAAAAAAMAP//DwAAAAAAAAANAP//DQAAAAAAAAANAAEACwAAAAAAAAANAAIACwAAAAAAAAANAAMACwAAAAAAAAANAAQACwAAAAAAAAANAAUACwAAAAAAAAANAAcAAAAAAAAAAADv/wEACAAAAAAAAADv/wIACAAAAAAAAADv/wMACAAAAAAAAADv/wQACAAAAAAAAADv/wUACAAAAAAAAADv/wYACAAAAAAAAADv/wcACAAAAAAAAADw/wcABgAAAAAAAADx/wcABgAAAAAAAADy/wcABgAAAAAAAADz/wcABgAAAAAAAAD0/wcABgAAAAAAAAD1/wcABgAAAAAAAAD2/wcABgAAAAAAAAD3/wcABgAAAAAAAAD4/wcABgAAAAAAAAD7/wcABgAAAAAAAAD5/wcABgAAAAAAAAD6/wcABgAAAAAAAAD8/wcABgAAAAAAAAD9/wcABgAAAAAAAAD+/wcABgAAAAAAAAD//wcABgAAAAAAAAAAAAcABgAAAAAAAAABAAcABgAAAAAAAAACAAcABgAAAAAAAAADAAcABgAAAAAAAAAEAAcABgAAAAAAAAAFAAcABgAAAAAAAAAGAAcABgAAAAAAAAAHAAcABgAAAAAAAAAIAAcABgAAAAAAAAAJAAcABgAAAAAAAAAKAAcABgAAAAAAAAALAAcABgAAAAAAAAAMAAcABgAAAAAAAAANAAYABAAAAAAAAAAOAAYABQAAAAAAAAAPAAYABQAAAAAAAAAQAAYABQAAAAAAAAAQAAcAAQAAAAAAAAAOAAcAAwAAAAAAAAAPAAcAAwAAAAAAAAARAAYAAgAAAAAAAAARAAcACwAAAAAAAADv/wgACAAAAAAAAADv/wkACAAAAAAAAADv/woACAAAAAAAAADv/wsACAAAAAAAAADv/wwACAAAAAAAAADv/w0ACAAAAAAAAADv/w4ACAAAAAAAAAANAAgACwAAAAAAAAANAAkACwAAAAAAAAANAAoACwAAAAAAAAANAAsACwAAAAAAAAANAAwACwAAAAAAAAANAA0ACwAAAAAAAAANAA4ACwAAAAAAAADw/w4ABgAAAAAAAADx/w4ABgAAAAAAAADy/w4ABgAAAAAAAADz/w4ABgAAAAAAAAD0/w4ABgAAAAAAAAD1/w4ABgAAAAAAAAD2/w4ABgAAAAAAAAD3/w4ABgAAAAAAAAD4/w4ABgAAAAAAAAD5/w4ABgAAAAAAAAD6/w4ABgAAAAAAAAD7/w4ABgAAAAAAAAD//w4ABgAAAAAAAAAAAA4ABgAAAAAAAAABAA4ABgAAAAAAAAACAA4ABgAAAAAAAAADAA4ABgAAAAAAAAAEAA4ABgAAAAAAAAAFAA4ABgAAAAAAAAAGAA4ABgAAAAAAAAAHAA4ABgAAAAAAAAAIAA4ABgAAAAAAAAAJAA4ABgAAAAAAAAAKAA4ABgAAAAAAAAALAA4ABgAAAAAAAAAMAA4ABgAAAAAAAAD8/w4ABgAAAAAAAAD9/w4ABgAAAAAAAAD+/w4ABgAAAAAAAAARAAgACwAAAAAAAAARAAkACwAAAAAAAAARAAoACwAAAAAAAAARAAsACwAAAAAAAAARAAwACwAAAAAAAAARAA0ACwAAAAAAAAARAA4ACwAAAAAAAAA=")
+tile_set = SubResource("TileSet_gpokl")
+
+[connection signal="value_changed" from="Level Assets/Player/Camera2D/UI/ProgressBar" to="Level Assets/Player/Camera2D/UI/ProgressBar" method="_on_value_changed"]

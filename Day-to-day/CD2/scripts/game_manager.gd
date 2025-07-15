@@ -60,7 +60,7 @@ func _activity_progress_hour(activity:Activity) -> void:
 		
 func _trigger_popup(popup: Node) -> void:
 	Global.in_clickable = true
-	get_node("../../Level Assets/Camera2D/Popups/PopupSlot").add_child(popup)
+	get_node("../../Level Assets/Player/Camera2D/Popups/PopupSlot").add_child(popup)
 	
 func _dismissed_popup() -> void:
 	Global.in_clickable = false

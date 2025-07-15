@@ -8,8 +8,8 @@ func _init():
 	clickable_game = load("res://scenes/clickables/do_dishes.tscn")
 	
 	energy_streak_map = {
-		0: -3,
-		1: -3,
+		0: -4,
+		1: -5,
 		2: -3,
 		3: -3,
 		4: -2
@@ -44,13 +44,13 @@ var clickable_game_completed = func():
 	_make_bed()
 	was_done_today = true
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and !Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
-			Global.mouse_click()
-			is_playing_clickable_chore = true
-			var clickable_game_node = clickable_game.instantiate()
-			Global.trigger_popup.emit(clickable_game_node)
+#func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#if event is InputEventMouseButton:
+		#if (event.pressed and event.button_index == MOUSE_BUTTON_LEFT and is_player_in_room and !Global.is_walking and !was_done_today and is_activity_doable and !Global.in_clickable):
+			#Global.mouse_click()
+			#is_playing_clickable_chore = true
+			#var clickable_game_node = clickable_game.instantiate()
+			#Global.trigger_popup.emit(clickable_game_node)
 			
 			
 func _make_bed() -> void:
