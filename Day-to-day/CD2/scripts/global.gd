@@ -32,6 +32,7 @@ signal clickable_chore_completed
 signal clickable_clicked
 
 signal pan_camera
+signal pan_completed
 
 var is_paused: bool = false
 var in_clickable: bool = false

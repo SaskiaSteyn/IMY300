@@ -47,6 +47,7 @@ func _pan_to_node(node: Node2D) -> void:
 				position.y
 			),
 			2).set_trans(Tween.TRANS_SINE)
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", original_position, 2).set_trans(Tween.TRANS_SINE)
+	Global.pan_completed.emit(node)

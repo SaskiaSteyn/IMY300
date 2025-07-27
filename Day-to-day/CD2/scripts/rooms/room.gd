@@ -15,7 +15,8 @@ var is_exiting: bool = false
 var chores: Array = []
 var exit_point_vector: Vector2 = Vector2(0,0)
 
-@export var unlock_room_popup: Resource = null
+@export var unlock_room_popup: FlashBack = null
+@export var flashback: VideoStream = null
 
 func _ready()-> void:
 	print("Readying room")
@@ -109,3 +110,11 @@ func unlock_room(unlocking_room: Global.Rooms) -> void:
 			Global.trigger_popup.emit(unlock_room_popup)
 		Global.pan_camera.emit(self)
 		Global.ping_energy_bar.emit()
+		
+func pan_completed(node: Node2D) -> void:
+	if(node.name == name):
+		if unlock_room_popup != null:
+			Global.is_paused = true
+			var popup = unlock_room_popup.instantiate()
+			popup.video = flashback
+			Global.trigger_popup.emit(unlock_room_popup)
