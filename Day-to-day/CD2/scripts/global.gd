@@ -4,29 +4,47 @@ extends Node
 
 signal player_exit_room
 signal player_enter_room
+
 signal energy_bar_value_changed
 signal change_energy
+signal preview_energy_cost
+signal stop_energy_preview
+
 signal activity_done
+
 signal unlock_room
+
 signal trigger_popup
 signal dismiss_popup
+
 signal ping_energy_bar
 signal pong_energy_bar
+
 signal progress_hour
 signal progress_day
-signal making_bed
+signal sleep_till_6
+
+signal is_sleeping
+signal is_bed_made
 signal reset_day
+
 signal clickable_chore_completed
 signal clickable_clicked
+
+signal pan_camera
 
 var is_paused: bool = false
 var in_clickable: bool = false
 var can_autosleep: bool = true
 
-var unlockedRooms: float = 0.0
+var actual_energy: int = 8
+
+var healed_fragments: int = 0
+var healed_fragments_diff: int = 0
+
+var unlockedRooms: float = 1.0
 
 enum Rooms{BEDROOM, BATHROOM, KITCHEN}
-enum Unlock_Room{BATHROOM, KITCHEN}
 var going_to_room: Rooms
 
 var is_walking: bool = false

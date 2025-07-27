@@ -20,11 +20,12 @@ shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/flickering_speed = 0.0
 shader_parameter/minimal_flickering_alpha = 0.9
 
-[node name="Bed-sprite" type="StaticBody2D" groups=["bedroom_chore", "chores"]]
+[node name="MakeBed" type="StaticBody2D" groups=["bedroom_chore", "chores"]]
 material = SubResource("ShaderMaterial_qf5qi")
 scale = Vector2(0.500424, 0.500367)
 input_pickable = true
 script = ExtResource("2_p4rj2")
+is_locked = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_y06w7")

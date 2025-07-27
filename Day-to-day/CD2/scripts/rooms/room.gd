@@ -3,6 +3,7 @@ class_name Room
 
 @onready var path_follow : PathFollow2D = $Path2D/PathFollow2D
 @onready var path : Path2D = $Path2D
+@onready var door : Sprite2D = $Door
 #@onready var chore_sprite: StaticBody2D = $"chore-sprite"
 
 @export var starts_with_player: bool = false
@@ -14,8 +15,11 @@ var is_exiting: bool = false
 var chores: Array = []
 var exit_point_vector: Vector2 = Vector2(0,0)
 
+@export var unlock_room_popup: Resource = null
+
 func _ready()-> void:
 	print("Readying room")
+	Global.unlock_room.connect(unlock_room.bind())
 	#Global.player_enter_room.connect(_player_enter_room.bind())
 	#Global.player_exit_room.connect(_player_exit_room.bind())
 	self.body_entered.connect(_on_body_entered.bind())
@@ -56,7 +60,7 @@ func _ready()-> void:
 		
 func _process(delta: float) -> void:
 	if(is_player_in_room):
-		var value: float = (Global.Unlock_Room.size() - Global.unlockedRooms)/Global.Unlock_Room.size()
+		var value: float = (Global.Rooms.size() - Global.unlockedRooms)/Global.Rooms.size()
 		var modifier = remap(value, 0, 1, 150, 0)
 			
 		if(is_exiting):
@@ -91,3 +95,17 @@ func _on_body_exited(body: Node2D) -> void:
 		for chore in chores:
 			chore.is_player_in_room = false
 		is_exiting = false
+		
+func unlock_room(unlocking_room: Global.Rooms) -> void:
+	if(unlocking_room == room_name):
+		print("unlocking " + Global.Rooms.keys()[room_name])
+		door.visible = false
+		for chore : Activity in chores:
+			chore.is_locked = false
+			chore.is_locked_for_day = true
+		Global.unlockedRooms += 1
+		if unlock_room_popup != null:
+			Global.is_paused = true
+			Global.trigger_popup.emit(unlock_room_popup)
+		Global.pan_camera.emit(self)
+		Global.ping_energy_bar.emit()

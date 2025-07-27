@@ -12,7 +12,7 @@ shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/flickering_speed = 0.0
 shader_parameter/minimal_flickering_alpha = 0.9
 
-[node name="Node2D" type="StaticBody2D" groups=["bathroom-chore", "bathroom_chore", "chores"]]
+[node name="Vanity" type="StaticBody2D" groups=["bathroom-chore", "bathroom_chore", "chores"]]
 input_pickable = true
 script = ExtResource("1_tp5tx")
 metadata/_custom_type_script = "uid://cley85c6m3tim"

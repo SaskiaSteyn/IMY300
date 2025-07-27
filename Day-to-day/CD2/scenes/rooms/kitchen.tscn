@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://chmoj7chbptds"]
+[gd_scene load_steps=10 format=3 uid="uid://chmoj7chbptds"]
 
 [ext_resource type="Script" uid="uid://cwnpl2b1nweuy" path="res://scripts/rooms/kitchen.gd" id="1_2812u"]
 [ext_resource type="Texture2D" uid="uid://b55jitoq82yo8" path="res://assets/art/Kitchen.png" id="2_2812u"]
 [ext_resource type="PackedScene" uid="uid://ca4xrabdcv1s0" path="res://scenes/activities/kitchen_do_dishes.tscn" id="3_jtubd"]
 [ext_resource type="Shader" uid="uid://diox3p6wj7oee" path="res://shaders/glow_shader.gdshader" id="4_njvo0"]
+[ext_resource type="Texture2D" uid="uid://bo8i35citol54" path="res://assets/art/door-frame-tiles/Kitchen_Door.png" id="5_jtubd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_581re"]
 resource_local_to_scene = true
@@ -57,6 +58,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 position = Vector2(0.5, 325)
 shape = SubResource("RectangleShape2D_whf2s")
+
+[node name="Door" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jtubd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

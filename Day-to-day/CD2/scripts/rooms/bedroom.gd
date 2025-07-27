@@ -11,7 +11,7 @@ extends Room
 
 
 func _init()-> void:
-	Global.making_bed.connect(_make_bed.bind())
+	Global.is_bed_made.connect(_make_bed.bind())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

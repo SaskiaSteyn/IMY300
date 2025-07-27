@@ -1141,13 +1141,11 @@ scale = Vector2(1.1, 1.09812)
 starts_with_player = true
 
 [node name="Bathroom" parent="Level Assets" instance=ExtResource("3_wi4c7")]
-visible = false
 position = Vector2(-191, 573)
 scale = Vector2(1.1, 1.1)
 input_pickable = true
 
 [node name="Kitchen" parent="Level Assets" instance=ExtResource("4_70vka")]
-visible = false
 position = Vector2(-1325, 576)
 scale = Vector2(1.1, 1.1)
 
@@ -1158,7 +1156,6 @@ scale = Vector2(1.1, 1.1)
 [node name="Camera2D" type="Camera2D" parent="Level Assets/Player"]
 visible = false
 position = Vector2(465.455, -270)
-scale = Vector2(0.909091, 0.909091)
 offset = Vector2(-464, 0)
 script = ExtResource("1_72e8q")
 

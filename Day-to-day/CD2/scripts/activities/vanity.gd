@@ -7,15 +7,15 @@ func _init():
 	clickable_finished_func = clickable_game_completed
 	clickable_game = load("res://scenes/clickables/vanity.tscn")
 	energy_streak_map = {
-		0: 2,
+		0: 1,
 		1: 2,
-		2: 1,
-		3: 1,
-		4: 1
+		2: 2,
+		3: 3,
+		4: 3
 	}
 	
 	events_map = {
-		0:  event_func_day_zero
+		1:  event_func_day_zero
 	}
 	
 	unlockables_map = {
@@ -35,7 +35,7 @@ var event_func_day_zero = func():
 	
 var unlockable_func_day_zero = func(): 
 	var key_scene = load("res://scenes/key.tscn").instantiate()
-	key_scene._set_unlocking_room(Global.Unlock_Room.KITCHEN)
+	key_scene._set_unlocking_room(Global.Rooms.KITCHEN)
 	Global.curr_room.add_child(key_scene)
 	
 var clickable_game_completed = func():

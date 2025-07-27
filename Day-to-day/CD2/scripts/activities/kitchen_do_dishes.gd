@@ -9,7 +9,7 @@ func _init():
 	
 	energy_streak_map = {
 		0: -4,
-		1: -5,
+		1: -4,
 		2: -3,
 		3: -3,
 		4: -2

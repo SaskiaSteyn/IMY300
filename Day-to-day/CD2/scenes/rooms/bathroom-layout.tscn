@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://7ld0jp32wueg"]
+[gd_scene load_steps=8 format=3 uid="uid://7ld0jp32wueg"]
 
 [ext_resource type="Script" uid="uid://bi3gjj25arswg" path="res://scripts/rooms/bathroom.gd" id="1_tj2xp"]
 [ext_resource type="Texture2D" uid="uid://bahd077x8p3s3" path="res://assets/art/Bathroom.png" id="2_tj2xp"]
 [ext_resource type="PackedScene" uid="uid://delvjvtr82v24" path="res://scenes/activities/vanity.tscn" id="3_tj2xp"]
+[ext_resource type="Texture2D" uid="uid://dvevtnxffqv8d" path="res://assets/art/door-frame-tiles/Bathroom_Door.png" id="4_hlav7"]
 
 [sub_resource type="Curve2D" id="Curve2D_hlav7"]
 _data = {
@@ -47,6 +48,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 324.5)
 shape = SubResource("RectangleShape2D_tj2xp")
+
+[node name="Door" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_hlav7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

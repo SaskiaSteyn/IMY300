@@ -6,8 +6,9 @@ extends Node
 func _ready() -> void:
 	Global.activity_done.connect(_activity_done.bind())
 	Global.trigger_popup.connect(_trigger_popup.bind())
-	Global.unlock_room.connect(_unlock_room.bind())
 	Global.reset_day.connect(_reset_day.bind())
+	var eodPopup = load("res://scenes/eod_screen.tscn").instantiate()
+	Global.trigger_popup.emit(eodPopup)
 	
 	
 #This is the main flow for when an activity is completed by the player.
@@ -65,19 +66,21 @@ func _trigger_popup(popup: Node) -> void:
 func _dismissed_popup() -> void:
 	Global.in_clickable = false
 		
-func _unlock_room(unlock_room: Global.Unlock_Room) -> void:
-	match unlock_room:
-		Global.Unlock_Room.BATHROOM: 
-			get_node("../../Level Assets/Bathroom").visible = true
-		Global.Unlock_Room.KITCHEN: 
-			get_node("../../Level Assets/Kitchen").visible = true
-			Global.is_paused = true
-			var flashbackNode = load("res://scenes/popups/flashback.tscn").instantiate()
-			Global.trigger_popup.emit(flashbackNode)
-		_: 
-			print("no match found")
-			
-	Global.ping_energy_bar.emit()
+#func _unlock_room(unlock_room: Global.Rooms) -> void:
+	#match unlock_room:
+		#Global.Unlock_Room.BATHROOM: 
+			#get_node("../../Level Assets/Bathroom").unlock_room()
+			#Global.unlockedRooms += 1
+		#Global.Unlock_Room.KITCHEN: 
+			#get_node("../../Level Assets/Kitchen").unlock_room()
+			#Global.unlockedRooms += 1
+			#Global.is_paused = true
+			#var flashbackNode = load("res://scenes/popups/flashback.tscn").instantiate()
+			#Global.trigger_popup.emit(flashbackNode)
+		#_: 
+			#print("no match found")
+			#
+	#Global.ping_energy_bar.emit()
 	
 func _reset_day() -> void:
 	get_tree().call_group("chores", "reset")

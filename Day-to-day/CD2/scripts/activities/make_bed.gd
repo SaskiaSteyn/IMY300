@@ -28,7 +28,7 @@ var loss_fun = func(x):
 
 var unlockable_func_day_zero = func(): 
 	var key_scene = load("res://scenes/key.tscn").instantiate()
-	key_scene._set_unlocking_room(Global.Unlock_Room.BATHROOM)
+	key_scene._set_unlocking_room(Global.Rooms.BATHROOM)
 	Global.curr_room.add_child(key_scene)
 	
 var clickable_game_completed = func():
@@ -50,4 +50,4 @@ func _make_bed() -> void:
 	#var made_bed = load("res://assets/art/bed-sprite.png")
 	#sprite.texture = made_bed
 	Global.activity_done.emit(self)
-	Global.making_bed.emit(true)
+	Global.is_bed_made.emit(true)

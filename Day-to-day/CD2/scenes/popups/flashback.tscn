@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://vltpqumg3ikh"]
 
-[ext_resource type="Script" uid="uid://cg7pb1m6acv3" path="res://scripts/popups/event_complete.gd" id="1_sl4ff"]
+[ext_resource type="Script" uid="uid://gcvn1yufik26" path="res://scripts/popups/flashback.gd" id="1_sl4ff"]
 [ext_resource type="Shader" uid="uid://cv68rnqlbiuyw" path="res://shaders/blur_bg.gdshader" id="2_x564s"]
 [ext_resource type="FontFile" uid="uid://jshayppk6c0q" path="res://assets/fonts/Single_Day/SingleDay-Regular.ttf" id="3_v1pvb"]
 
@@ -41,7 +41,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sl4ff")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_awe2l")
 layout_mode = 1
 anchors_preset = 15
@@ -52,6 +58,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.870588)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

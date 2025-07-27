@@ -3,17 +3,19 @@ extends Activity
 
 @onready var sleeping_sound = preload("res://assets/sfx/making bed_mixdown.wav")
 
+@onready var default_texture = load("res://assets/art/bed-sprite.png")
+@onready var sleeping_in_bed = load("res://assets/art/bedroom/Sleeping_In_Bed.png")
 
 
 func _init():
 	super(gain_fun, loss_fun)
 	input_func = input_func_event
 	energy_streak_map = {
-		0: 5,
-		1: 1,
-		2: 1,
-		3: 1,
-		4: 1
+		0: 3,
+		1: 3,
+		2: 3,
+		3: 3,
+		4: 3
 	}
 	
 	#events_map = {
@@ -21,6 +23,7 @@ func _init():
 	#}
 	
 	constant_func = progress_day
+	reset_func = custom_reset_func
 
 var gain_fun = func(x):
 	print(x)
@@ -34,8 +37,11 @@ var progress_day = func():
 	
 var input_func_event = func():
 	AudioPlayer.playOnce(sleeping_sound)
-	_make_bed()
+	_go_to_sleep()
 	was_done_today = true
+	
+var custom_reset_func = func():
+	sprite.texture = default_texture
 
 #func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	#if event is InputEventMouseButton:
@@ -44,6 +50,7 @@ var input_func_event = func():
 			
 			
 			
-func _make_bed() -> void:
-	sprite.rotation_degrees = 0
+func _go_to_sleep() -> void:
+	sprite.texture = sleeping_in_bed
 	Global.activity_done.emit(self)
+	Global.is_sleeping.emit(true)

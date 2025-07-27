@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Day To Day"
-run/main_scene="res://scenes/main_game.tscn"
+run/main_scene="uid://lubpqv23k6ep"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -40,6 +40,7 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 chores=""
 bedroom_chore="Chores specific to the bedroom"
 bathroom_chore=""
+heartfragment="scene is a heartfragment"
 
 [input]
 

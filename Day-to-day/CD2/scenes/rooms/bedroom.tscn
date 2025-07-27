@@ -45,7 +45,7 @@ resource_local_to_scene = true
 shader = SubResource("Shader_khs6t")
 shader_parameter/width = 10
 shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/flickering_speed = 3.0
+shader_parameter/flickering_speed = 0.0
 shader_parameter/minimal_flickering_alpha = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2v72"]
